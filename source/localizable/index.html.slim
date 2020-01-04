@@ -2,6 +2,27 @@
   == dato_meta_tags(dato.home)
 
 
+header.space--both-2
+  .wrap
+    div.mb-2 = image_tag "logo.png"
+
+    .grid
+      .grid__item.lap-6-12
+        h1.alpha = dato.home.title
+        p = dato.home.claim
+        div
+          a.button href="/libri/"  I nostri libri
+          a.button href="/info/chi-siamo/"  Chi siamo
+      .grid__item.lap-6-12
+        div
+          - if dato.home.banner_url.present?
+            = link_to dato.home.banner_url do
+              = image_tag dato.home.banner.file.fit('crop').width(400).format('pjpg').to_url
+          - else
+              = image_tag dato.home.banner.file.fit('crop').width(400).format('pjpg').to_url
+
+
+
 section
   .wrap
     h1.space--both-1= lorem.sentence
