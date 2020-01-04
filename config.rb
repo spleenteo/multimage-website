@@ -1,5 +1,6 @@
 require "lib/path_helpers"
 require "lib/image_helpers"
+require "lib/multimage_helpers"
 
 page '/*.xml', layout: false
 page '/*.json', layout: false
@@ -48,6 +49,7 @@ end
 helpers do
   include PathHelpers
   include ImageHelpers
+  include MultimageHelpers
 
   # Custom helper to theme
   def site_nav_menu
