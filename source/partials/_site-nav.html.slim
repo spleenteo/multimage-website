@@ -1,14 +1,15 @@
 nav.site-nav
   .wrap
     .site-nav__inner
-      = link_to "#",
-        class: "site-nav__menu-toggler js-nav-toggler--left" do
-        = i("hamburger")
-      .site-nav__left
-        = link_to locale_path("/"),
-          class: "site-nav__logo",
-          title: t('nav.home')
-            = inline_svg("logo.png", id: 'site_nav_logo', title: 'LOGO')
+      - if false
+        = link_to "#",
+          class: "site-nav__menu-toggler js-nav-toggler--left" do
+          = i("hamburger")
+        .site-nav__left
+          = link_to locale_path("/"),
+            class: "site-nav__logo",
+            title: t('nav.home')
+              = inline_svg("logo.png", id: 'site_nav_logo', title: 'LOGO')
 
       .site-nav__right
         .site-nav__topbar
