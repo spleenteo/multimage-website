@@ -26,8 +26,14 @@ nav.site-nav
               class: "site-nav__menu__link"
 
           li.site-nav__menu__item
-            = active_link_to t('nav.authors'),
-              locale_path("/autori/"),
+            = active_link_to t('nav.highlights'),
+              locale_path("/libri/highlights"),
+              class: "site-nav__menu__link"
+
+          li.site-nav__menu__item
+            = link_to t('nav.ebooks'),
+              "https://www.bookrepublic.it/books/publishers/multimage/",
+              target: "_blank",
               class: "site-nav__menu__link"
 
           li.site-nav__menu__item
@@ -35,9 +41,10 @@ nav.site-nav
               locale_path("/collane/"),
               class: "site-nav__menu__link"
 
+
           li.site-nav__menu__item
-            = active_link_to t('nav.highlights'),
-              locale_path("/libri/highlights"),
+            = active_link_to t('nav.authors'),
+              locale_path("/autori/"),
               class: "site-nav__menu__link"
 
           - site_nav_menu.each do |page|
