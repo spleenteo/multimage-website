@@ -37,6 +37,11 @@ nav.site-nav
               class: "site-nav__menu__link"
 
           li.site-nav__menu__item
+            = active_link_to t('nav.archive'),
+              locale_path("/libri/archivio"),
+              class: "site-nav__menu__link"
+
+          li.site-nav__menu__item
             = active_link_to t('nav.collections'),
               locale_path("/collane/"),
               class: "site-nav__menu__link"
@@ -47,11 +52,6 @@ nav.site-nav
               locale_path("/autori/"),
               class: "site-nav__menu__link"
 
-          - site_nav_menu.each do |page|
-            li.site-nav__menu__item
-              = active_link_to page.menu_label,
-                locale_path(page.slug),
-                class: "site-nav__menu__link"
 
       = link_to "#",
         class: "site-nav__menu-toggler js-nav-toggler--right" do
