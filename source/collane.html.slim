@@ -1,0 +1,27 @@
+- content_for(:head)
+  == dato_meta_tags(dato.collections_index)
+
+- collections = dato.collections
+/ = partial "partials/navbar"
+
+section
+  header
+    h1 = dato.collections_index.title
+    p = dato.collections_index.subtitle
+
+    p: strong  #{pluralize("Collana", collections.count)}
+    table
+      thead
+        th Libri
+        th Nome
+        th Descrizione
+      tbody
+        - collections.each do |col|
+          - pubs = dato.books.select{|b| b.collection == col}.count
+          - if pubs > 0
+            tr
+              td #{pluralize("libro", pubs)}
+              td = link_to col.name, "/collane/#{col.slug}"
+              td = col.description
+
+= partial "partials/cta"
