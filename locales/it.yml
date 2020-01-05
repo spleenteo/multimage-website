@@ -20,9 +20,14 @@ it:
     twitter: https://twitter.com/multimageED
 
   nav:
-    menu: "Menu"
-    home: "HOME"
+    archive: "Fuori collana"
+    authors: "Autori"
+    books: "Libri"
+    collections: "Collane"
+    highlights: "In evidenza"
+    home: "Home"
     menu_close: "Chiudi"
+    menu: "Menu"
 
   form:
     label:
