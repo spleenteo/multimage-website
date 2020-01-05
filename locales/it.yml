@@ -24,6 +24,7 @@ it:
     authors: "Autori"
     books: "Catalogo"
     collections: "Collane"
+    distributors: "Distributori"
     ebooks: "Ebooks"
     highlights: "In evidenza"
     home: "Home"
