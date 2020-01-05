@@ -1,0 +1,16 @@
+- content_for(:head)
+  == dato_meta_tags(col)
+
+/ = partial "partials/navbar"
+
+- books = dato.books.select{|b| b.archive != true && b.collection == col}
+
+header
+  h1 Collana: #{col.name}
+  p = col.description
+  = link_to "vedi tutte le #{dato.collections.count} collane", "/collane/"
+
+section
+  = partial "/partials/books_table", locals: {books: books}
+
+= partial "partials/cta"

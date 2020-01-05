@@ -60,6 +60,30 @@ helpers do
   end
 end
 
+dato.tap do |dato|
+  # dato.pages.each do |article|
+  #   proxy "info/#{article.slug}/index.html",
+  #     "templates/page.html",
+  #     locals: { page: article }
+  # end
+
+  # dato.books.each do |book|
+  #   proxy "libri/#{book.slug}/index.html",
+  #     "templates/book.html",
+  #     locals: { book: book }
+  # end
+  dato.collections.each do |col|
+    proxy "collane/#{col.slug}/index.html",
+      "templates/collana.html",
+      locals: { col: col }
+  end
+  # dato.authors.each do |author|
+  #   proxy "autori/#{author.slug}/index.html",
+  #     "templates/autore.html",
+  #     locals: { author: author }
+  # end
+end
+
 # dato.tap do |dato|
 #   dato.articles.each do |article|
 #     proxy(
