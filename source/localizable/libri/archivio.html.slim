@@ -1,0 +1,14 @@
+- content_for(:head)
+  == dato_meta_tags(dato.archive_index)
+
+- archived_books = dato.books.select{|b| b.archive == true}.sort_by(&:print_year).reverse
+/ = partial "partials/navbar"
+
+header
+  h1 = dato.archive_index.title
+  p = dato.archive_index.subtitle
+
+section
+  = partial "/partials/books_table", locals: {books: archived_books}
+
+= partial "partials/cta"
