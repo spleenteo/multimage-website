@@ -128,20 +128,20 @@ end
 #   end
 # end
 
-LOCALES.each do |locale|
-  I18n.with_locale(locale) do
-    prefix = locale == LOCALES[0] ? "" : "/#{locale}"
+# LOCALES.each do |locale|
+#   I18n.with_locale(locale) do
+#     prefix = locale == LOCALES[0] ? "" : "/#{locale}"
 
-    proxy "#{prefix}/index.html",
-      "/localizable/index.html",
-      locale: locale
+#     proxy "#{prefix}/index.html",
+#       "/localizable/index.html",
+#       locale: locale
 
-    proxy "#{prefix}/contact/index.html",
-      "templates/contact_page.html",
-      locals: { locale: I18n.locale },
-      locale: locale
-  end
-end
+#     proxy "#{prefix}/contact/index.html",
+#       "templates/contact_page.html",
+#       locals: { locale: I18n.locale },
+#       locale: locale
+#   end
+# end
 
 proxy "site.webmanifest",
   "templates/site.webmanifest",
