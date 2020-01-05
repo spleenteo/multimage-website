@@ -1,0 +1,63 @@
+- content_for(:head)
+  == dato_meta_tags(book)
+
+/ = partial "partials/navbar"
+
+header
+  css:
+    .content_5{
+      background-image: url("#{book.cover_image.file.fit('crop').crop('edges').blur(700).width(1200).height(400).format('pjpg').to_url}");
+    }
+
+  - if book.archive
+    hr
+    div: strong Attenzione: questo libro è fuori catalogo
+    hr
+
+  h1 = book.title
+  p di #{link_to_authors(book.authors)}
+  p collana #{link_to book.collection.name, "/collane/#{book.collection.slug}"}
+  p = book.description
+  figure
+    = image_tag book.cover_image.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
+
+  ul
+    - if book.price.present?
+      li: a href="#" = book_price(book)
+    - if book.epub_url.present?
+      li: a href="#{book.epub_url}" target="_blank" Ebook a #{book.epub_price} €
+
+- if book.review.present?
+  section
+    h4 Quarta di copertina
+    article = book.review
+    hr
+
+section
+  h4 = pluralize("Autore", book.authors.count)
+  - book.authors.each do |author|
+    div
+      figure
+        = image_tag author.picture.file.fit('crop').width(200).height(200).format('pjpg').to_url,class: "img-fluid radius_full" if author.picture.present?
+      h3 = author_name(author)
+      p = author.country
+      p = truncate_words(author.biography, length: 35)
+      = link_to "Scheda autore", "/autori/#{author.slug}"
+
+section
+  h4 Dettagli edizione
+  ul
+    = show_book_detail("EAN", book.isbn)
+    = show_book_detail("Anno", book.print_year)
+    = show_book_detail("Prima edizione", book.first_print_year)
+    = show_book_detail("Ristampa", book.reprint)
+    = show_book_detail("Lingua originale", book.original_lang)
+    = show_book_detail("Titolo originale", book.original_title)
+    = show_book_detail("Traduttore", book.translator)
+
+  h4 Info grafica
+  ul
+    = show_book_detail("Copyright", book.copyright)
+    = show_book_detail("Pagine", book.pages)
+    = show_book_detail("Grafica copertina", book.cover_designer)
+    = show_book_detail("Impaginazione", book.layout_artist)

@@ -1,5 +1,5 @@
 - if books.present?
-  p: strong  #{books.count} libri
+  p: strong = pluralize("libro", books.count)
   table
     thead
       th In evidenza

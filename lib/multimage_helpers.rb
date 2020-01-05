@@ -10,6 +10,17 @@ module MultimageHelpers
     number_to_currency(p, :unit => "€", :locale=>"it")
   end
 
+  def show_book_detail(label, detail)
+    if detail.present? && label.present?
+      content_tag :li do
+        concat(
+          content_tag(:strong, label) +": "+
+          content_tag(:span, detail)
+        )
+      end
+    end
+  end
+
   def link_to_authors(authors)
     authors.map do |author|
       link_to author_name(author), "/autori/#{author.slug}"
