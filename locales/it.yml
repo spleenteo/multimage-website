@@ -21,8 +21,13 @@ it:
 
   nav:
     menu: "Menu"
-    home: "HOME"
+    home: "Home"
     menu_close: "Chiudi"
+    books: "Libri"
+    authors: "Autori"
+    collections: "Collane"
+    highlights: "In evidenza"
+    archive: "Fuori collana"
 
   form:
     label:
