@@ -1,0 +1,34 @@
+- content_for(:head)
+  == dato_meta_tags(author)
+
+/ = partial "partials/navbar"
+
+- books = dato.books.select{|b| b.authors.include?(author)}
+
+header
+  - if author.picture.present?
+    css:
+      .content_5{
+        background-image: url("#{author.picture.file.fit('crop').crop('edges').blur(700).width(1200).height(400).format('pjpg').to_url }");
+      }
+
+  - if author.picture.present?
+    = image_tag author.picture.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
+
+  h1 = author_name(author)
+  p Proveniente da #{author.country}, ha pubblicato #{pluralize("libro", books.count)} con Multimage
+
+
+section
+  h4 Biografia
+  article  = author.biography
+
+
+section
+    h4 #{pluralize("libro", books.count)} di questo autore
+    ul
+      - books.each do |book|
+        li = link_to book.title, "/libri/#{book.slug}"
+
+
+= partial "partials/cta"

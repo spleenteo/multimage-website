@@ -77,11 +77,11 @@ dato.tap do |dato|
       "templates/collana.html",
       locals: { col: col }
   end
-  # dato.authors.each do |author|
-  #   proxy "autori/#{author.slug}/index.html",
-  #     "templates/autore.html",
-  #     locals: { author: author }
-  # end
+  dato.authors.each do |author|
+    proxy "autori/#{author.slug}/index.html",
+      "templates/autore.html",
+      locals: { author: author }
+  end
 end
 
 # dato.tap do |dato|
