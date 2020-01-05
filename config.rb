@@ -67,11 +67,11 @@ dato.tap do |dato|
   #     locals: { page: article }
   # end
 
-  # dato.books.each do |book|
-  #   proxy "libri/#{book.slug}/index.html",
-  #     "templates/book.html",
-  #     locals: { book: book }
-  # end
+  dato.books.each do |book|
+    proxy "libri/#{book.slug}/index.html",
+      "templates/libro.html",
+      locals: { book: book }
+  end
   dato.collections.each do |col|
     proxy "collane/#{col.slug}/index.html",
       "templates/collana.html",
