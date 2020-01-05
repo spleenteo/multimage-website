@@ -1,20 +1,42 @@
----
-hide_from_sitemap: true
----
-- langs = ENV.fetch('LANGS').split(",")
+- content_for(:head)
+  == dato_meta_tags(dato.home)
 
-div style="display: none;"
-  - langs.each do |lang|
-    p
-      a href="/#{lang}"
-        = I18n.t('index_lang')
+header
+  div.mb-2 = image_tag "logo.png"
+  h1 = dato.home.title
+  p = dato.home.claim
+  ul
+    li: a href="/libri/"  I nostri libri
+    li: a href="/info/chi-siamo/"  Chi siamo
 
-javascript:
-  var languages = #{langs.to_json};
-  var language = window.navigator.userLanguage || window.navigator.language;
-  if (languages.includes(language.substring(0,2))) {
-    l = language.substring(0,2);
-  } else {
-    l = languages[0];
-  }
-  window.location.href = "/" + l + "/";
+  div
+    - if dato.home.banner_url.present?
+      = link_to dato.home.banner_url do
+        = image_tag dato.home.banner.file.fit('crop').width(400).format('pjpg').to_url
+    - else
+        = image_tag dato.home.banner.file.fit('crop').width(400).format('pjpg').to_url
+
+= partial "partials/cta"
+/ = partial "partials/highlight"
+= partial "partials/newsletter"
+
+- if false
+  section
+    .wrap
+      h1.space--both-1= lorem.sentence
+      .formatted-content
+        = lorem.paragraphs(5)
+        / Test image with lazyload options
+        /= image_lazy(dato.homepage.image, {w: 1920}, [[960, 480], [1080, 720], [1536, 1024], [1920, 1536]])
+
+  section.space--both-2
+    .wrap
+      .grid--center
+        .grid__item.desk-8-12
+          .carousel
+            .carousel__item
+              = image_tag("", data: {lazy: "//via.placeholder.com/1920x750/FF0000"}, alt: "placeholder", title: "title")
+            .carousel__item
+              = image_tag("", data: {lazy: "//via.placeholder.com/1920x750/0000FF"}, alt: "placeholder", title: "title")
+            .carousel__item
+              = image_tag("", data: {lazy: "//via.placeholder.com/1920x750/008000"}, alt: "placeholder", title: "title")
