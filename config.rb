@@ -61,12 +61,11 @@ helpers do
 end
 
 dato.tap do |dato|
-  # dato.pages.each do |article|
-  #   proxy "info/#{article.slug}/index.html",
-  #     "templates/page.html",
-  #     locals: { page: article }
-  # end
-
+  dato.pages.each do |article|
+    proxy "info/#{article.slug}/index.html",
+      "templates/page.html",
+      locals: { page: article }
+  end
   dato.books.each do |book|
     proxy "libri/#{book.slug}/index.html",
       "templates/libro.html",

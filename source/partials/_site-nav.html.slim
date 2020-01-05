@@ -56,6 +56,14 @@ nav.site-nav
               locale_path("/distributori/"),
               class: "site-nav__menu__link"
 
+          li
+            span = t('nav.info')
+            ul
+              - dato.pages.sort_by(&:position).each_slice(3) do |sub_collection|
+                - sub_collection.each do |item|
+                  li
+                    a href="/info/#{item.slug}" = item.title
+
 
       = link_to "#",
         class: "site-nav__menu-toggler js-nav-toggler--right" do
