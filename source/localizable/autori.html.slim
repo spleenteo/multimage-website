@@ -1,0 +1,29 @@
+- content_for(:head)
+  == dato_meta_tags(dato.authors_index)
+
+- authors = dato.authors
+/= partial "partials/navbar"
+
+header
+  h1 = dato.authors_index.title
+  p = dato.authors_index.subtitle
+  hr
+
+section
+  p: strong  #{pluralize("autore", authors.count)}
+  table
+    thead
+      th Libri
+      th Nome/Pseudonimo
+      th Paese
+    tbody
+      - authors.each do |author|
+        - pubs = dato.books.select{|b| b.authors.include?(author)}.count
+        - if pubs > 0
+          tr
+            td #{pluralize("libro", pubs)}
+            td = link_to author_name(author), "/autori/#{author.slug}"
+            td #{author.country}
+
+= partial "partials/cta"
+
