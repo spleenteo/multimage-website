@@ -1,0 +1,33 @@
+- content_for(:head)
+  == dato_meta_tags(dato.suppliers_index)
+
+- collections = dato.suppliers.sort_by(&:region)
+/ = partial "partials/navbar"
+
+header
+  h1 = dato.suppliers_index.title
+  p = dato.suppliers_index.subtitle
+
+section
+  p: strong  #{pluralize("Distributore", collections.count)}
+  table
+    thead
+      th Dove
+      th
+      th Nome
+    tbody
+      - collections.each do |dist|
+        tr
+          td #{dist.region}, #{dist.city}
+          td
+            - if dist.logo.present?
+              = image_tag dist.logo.file.fit('clamp').width(80).height(80).format('pjpg').to_url
+          td
+            p: strong = dist.name
+            ul
+              li #{dist.address}
+              - if dist.map.present?
+                li = link_to "Come arrivarci", "http://maps.google.com/maps?z=12&t=m&q=loc:#{dist.map.latitude}+#{dist.map.longitude}", target: "_blank"
+              li #{dist.telephone} #{mail_to dist.email} - #{link_to "Sito web", dist.url, target: "_blank" if dist.url.present?}
+
+
