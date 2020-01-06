@@ -4,10 +4,8 @@
 - authors = dato.authors
 /= partial "partials/navbar"
 
-header
-  h1 = dato.authors_index.title
-  p = dato.authors_index.subtitle
-  hr
+= partial "partials/page_header",
+  locals: {title: dato.authors_index.title, subtitle: dato.authors_index.subtitle }
 
 section
   p: strong  #{pluralize("autore", authors.count)}

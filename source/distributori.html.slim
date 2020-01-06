@@ -4,9 +4,7 @@
 - collections = dato.suppliers.sort_by(&:region)
 / = partial "partials/navbar"
 
-header
-  h1 = dato.suppliers_index.title
-  p = dato.suppliers_index.subtitle
+= partial "partials/page_header", locals: {title: dato.suppliers_index.title, subtitle: dato.suppliers_index.subtitle }
 
 section
   p: strong  #{pluralize("Distributore", collections.count)}
