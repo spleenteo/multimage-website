@@ -4,9 +4,8 @@
 - archived_books = dato.books.select{|b| b.archive == true}.sort_by(&:print_year).reverse
 / = partial "partials/navbar"
 
-header
-  h1 = dato.archive_index.title
-  p = dato.archive_index.subtitle
+= partial "partials/page_header",
+  locals: {title: dato.archive_index.title, subtitle: dato.archive_index.subtitle }
 
 section
   = partial "/partials/books_table", locals: {books: archived_books}

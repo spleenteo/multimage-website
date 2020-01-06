@@ -5,9 +5,8 @@
 
 / = partial "partials/navbar"
 
-header
-  h1 = dato.highlights_index.title
-  p = dato.highlights_index.subtitle
+= partial "partials/page_header",
+  locals: {title: dato.highlights_index.title, subtitle: dato.highlights_index.subtitle }
 
 section
   = partial "partials/books_table", locals: {books: available_books}
