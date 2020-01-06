@@ -1,0 +1,9 @@
+- title ||= ""
+- subtitle ||= ""
+
+header
+  h1 = title
+  p = subtitle
+  - if block_given?
+    = yield
+  hr
