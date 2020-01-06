@@ -28,11 +28,7 @@ module MultimageHelpers
   end
 
   def author_name(author)
-    if !author.alias.present? && !author.full_name.present?
-      return "Ignoto"
-    else
-      author.alias.present? ? author.alias : author.full_name
-    end
+    author.alias.present? ? author.alias : author.full_name
   end
 
   def pluralize(word, count)
