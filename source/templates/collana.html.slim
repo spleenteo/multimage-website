@@ -5,10 +5,9 @@
 
 - books = dato.books.select{|b| b.archive != true && b.collection == col}
 
-header
-  h1 Collana: #{col.name}
-  p = col.description
-  = link_to "vedi tutte le #{dato.collections.count} collane", "/collane/"
+= partial "partials/page_header",
+  locals: {title: "Collana: #{col.name}", subtitle: col.description } do
+   = link_to "vedi tutte le #{dato.collections.count} collane", "/collane/"
 
 section
   = partial "/partials/books_table", locals: {books: books}

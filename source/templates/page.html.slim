@@ -3,9 +3,8 @@
 
 / = partial "partials/navbar"
 
-header
-  h1 = page.title
-  p = page.subtitle
+= partial "partials/page_header",
+  locals: {title: page.title, subtitle: page.subtitle }
 
 article
   - if page.featured_image.present?

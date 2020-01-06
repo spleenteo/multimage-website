@@ -3,7 +3,9 @@
 
 / = partial "partials/navbar"
 
-header
+= partial "partials/page_header",
+  locals: {title: book.title, subtitle: "di #{link_to_authors(book.authors)}" } do
+
   css:
     .content_5{
       background-image: url("#{book.cover_image.file.fit('crop').crop('edges').blur(700).width(1200).height(400).format('pjpg').to_url}");
@@ -14,8 +16,6 @@ header
     div: strong Attenzione: questo libro è fuori catalogo
     hr
 
-  h1 = book.title
-  p di #{link_to_authors(book.authors)}
   p collana #{link_to book.collection.name, "/collane/#{book.collection.slug}"}
   p = book.description
   figure

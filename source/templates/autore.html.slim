@@ -11,13 +11,11 @@ header
       .content_5{
         background-image: url("#{author.picture.file.fit('crop').crop('edges').blur(700).width(1200).height(400).format('pjpg').to_url }");
       }
-
-  - if author.picture.present?
-    = image_tag author.picture.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
-
   h1 = author_name(author)
   p Proveniente da #{author.country}, ha pubblicato #{pluralize("libro", books.count)} con Multimage
 
+  - if author.picture.present?
+    = image_tag author.picture.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
 
 section
   h4 Biografia
