@@ -13,7 +13,11 @@
 
   - if book.archive
     hr
-    div: strong Attenzione: questo libro è fuori catalogo
+    div: strong Attenzione: questo libro è fuori catalogo e non verrà ristampato
+    hr
+  - elsif book.unavailable
+    hr
+    div: strong Attenzione: questo libro è esaurito ma potrebbe essere ristampato nel prossimo futuro
     hr
 
   p collana #{link_to book.collection.name, "/collane/#{book.collection.slug}"}
@@ -21,11 +25,12 @@
   figure
     = image_tag book.cover_image.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
 
-  ul
-    - if book.price.present?
-      li: a href="#" = book_price(book)
-    - if book.epub_url.present?
-      li: a href="#{book.epub_url}" target="_blank" Ebook a #{book.epub_price} €
+  - if !book.archive
+    ul
+      - if book.price.present?
+        li: a href="#" = book_price(book)
+      - if book.epub_url.present?
+        li: a href="#{book.epub_url}" target="_blank" Ebook a #{book.epub_price} €
 
 - if book.review.present?
   section
