@@ -21,6 +21,7 @@
   figure
     = image_tag book.cover_image.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
 
+  - if !book.archive
   ul
     - if book.price.present?
       li: a href="#" = book_price(book)
