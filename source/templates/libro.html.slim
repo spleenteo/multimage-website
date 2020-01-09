@@ -31,8 +31,8 @@
         li
           = link_to "#{book_price(book)} – formato #{book.format}", "#"
 
-      - if book.formt == "ebook" && book.epub_url.present?
-        li = link_to "Acquista", book.epub_url, target="_blank"
+      - if book.format == "Ebook" && book.epub_url.present?
+        li = link_to "Acquista", book.epub_url, target: "_blank"
 
 - if book.review.present?
   section
