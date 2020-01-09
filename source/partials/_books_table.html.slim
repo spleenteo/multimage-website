@@ -5,8 +5,8 @@
       th In evidenza
       th Anno
       th Titlo
-      th Formato
       th Autore/i
+      th Formato
       th Isbn
     tbody
       - books.each do |book|
@@ -14,6 +14,6 @@
           td = book.highlight == true ? "🧡" : ""
           td #{book.print_year}
           td = link_to book.title, "/libri/#{book.slug}"
-          td = book.format
           td di #{link_to_authors(book.authors)}
+          td = book.format
           td #{book.isbn}
