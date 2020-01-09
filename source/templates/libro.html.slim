@@ -13,7 +13,11 @@
 
   - if book.archive
     hr
+    div: strong Attenzione: questo libro è fuori catalogo e non verrà ristampato
     hr
+  - elsif book.unavailable
+    hr
+    div: strong Attenzione: questo libro è esaurito ma potrebbe essere ristampato nel prossimo futuro
     hr
 
   p collana #{link_to book.collection.name, "/collane/#{book.collection.slug}"}
