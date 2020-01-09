@@ -1,9 +1,9 @@
-- title ||= ""
-- subtitle ||= ""
+- title ||= nil
+- subtitle ||= nil
 
 header
   h1 = title
-  p = subtitle
+  p = subtitle if subtitle.present?
   - if block_given?
     = yield
   hr
