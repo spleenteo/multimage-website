@@ -28,7 +28,8 @@
   - if !book.archive
     ul
       - if book.price.present?
-        li: a href="#" = book_price(book)
+        li
+          = link_to "#{book_price(book)} – formato #{book.format}", "#"
       - if book.epub_url.present?
         li: a href="#{book.epub_url}" target="_blank" Ebook a #{book.epub_price} €
 
