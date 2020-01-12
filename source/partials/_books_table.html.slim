@@ -14,6 +14,6 @@
           td = book.highlight == true ? "🧡" : ""
           td #{book.print_year}
           td = link_to book.title, "/libri/#{book.slug}"
-          td di #{link_to_authors(book.authors)}
+          td = link_to_authors(book)
           td = book.format
           td #{book.isbn}

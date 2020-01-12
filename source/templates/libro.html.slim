@@ -4,7 +4,7 @@
 / = partial "partials/navbar"
 
 = partial "partials/page_header",
-  locals: {title: book.title, subtitle: "di #{link_to_authors(book.authors)}" } do
+  locals: {title: book.title, subtitle: link_to_authors(book) } do
 
   css:
     .content_5{

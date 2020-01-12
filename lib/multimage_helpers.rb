@@ -16,15 +16,17 @@ module MultimageHelpers
         concat(
           content_tag(:strong, label) +": "+
           content_tag(:span, detail)
-        )
+          )
+        end
       end
     end
-  end
 
-  def link_to_authors(authors)
-    authors.map do |author|
-      link_to author_name(author), "/autori/#{author.slug}"
-    end.to_sentence(two_words_connector: ' e ', last_word_connector: ' e ')
+    def link_to_authors(book)
+      prefix = book.edited_by.present? ? "A cura di " : "Di "
+      authors = book.authors.map do |author|
+        link_to author_name(author), "/autori/#{author.slug}"
+      end.to_sentence(two_words_connector: ' e ', last_word_connector: ' e ')
+      content_tag(:p, prefix + authors)
   end
 
   def author_name(author)
