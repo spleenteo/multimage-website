@@ -22,13 +22,13 @@ module MultimageHelpers
     end
 
     def link_to_authors(book)
-      prefix = book.edited_by.present? ? "A cura di " : "Di "
+      prefix = book.edited_by.present? ? t("book.edited_by") : t("book.by")
 
       authors = book.authors.map do |author|
         link_to author_name(author), "/autori/#{author.slug}"
       end.to_sentence(two_words_connector: ' e ', last_word_connector: ' e ')
 
-      illustrator = book.illustrator.present? ? content_tag(:div, "Illustrato da " + book.illustrator) : ""
+      illustrator = book.illustrator.present? ? content_tag(:div, t("book.illustrated_by") + book.illustrator) : ""
 
       concat(
         content_tag(:div, prefix + authors) +
