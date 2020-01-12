@@ -25,8 +25,7 @@ section
 section
     h4 #{pluralize("libro", books.count)} di questo autore
     ul
-      - books.each do |book|
-        li = link_to book.title, "/libri/#{book.slug}"
-
+      - books.sort_by(&:title).each do |book|
+        li #{link_to book.title, "/libri/#{book.slug}"} #{"(curatore)" if book.edited_by.present?}
 
 = partial "partials/cta"
