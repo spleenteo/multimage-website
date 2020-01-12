@@ -10,9 +10,9 @@ section
   p: strong  #{pluralize("Distributore", collections.count)}
   table
     thead
-      th Dove
+      th = t("distributor.location")
       th
-      th Nome
+      th = t("distributor.name")
     tbody
       - collections.each do |dist|
         tr
@@ -25,7 +25,7 @@ section
             ul
               li #{dist.address}
               - if dist.map.present?
-                li = link_to "Come arrivarci", "http://maps.google.com/maps?z=12&t=m&q=loc:#{dist.map.latitude}+#{dist.map.longitude}", target: "_blank"
-              li #{dist.telephone} #{mail_to dist.email} - #{link_to "Sito web", dist.url, target: "_blank" if dist.url.present?}
+                li = link_to t("distributor.how_to_arrive"), "http://maps.google.com/maps?z=12&t=m&q=loc:#{dist.map.latitude}+#{dist.map.longitude}", target: "_blank"
+              li #{dist.telephone} #{mail_to dist.email} - #{link_to t("distributor.website"), dist.url, target: "_blank" if dist.url.present?}
 
 

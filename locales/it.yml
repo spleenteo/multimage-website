@@ -68,11 +68,17 @@ it:
     print_year: "Anno di stampa"
     reprint: "Ristampa"
     title: "Titolo"
-    translator: "Tradduttore"
+    translator: "Traduttore"
   collection:
     collection: "Collana"
     description: "Descrizione"
     name: "Nome"
+  distributor:
+    distributor: "distributore"
+    how_to_arrive: "Come arrivare"
+    location: "Regione/città"
+    name: "Nome"
+    website: "Sito web"
   form:
     label:
       first_name: "Nome"
