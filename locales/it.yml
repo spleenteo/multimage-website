@@ -32,6 +32,15 @@ it:
     menu_close: "Chiudi"
     menu: "Menu"
 
+  book:
+    highlight: "In evidenza"
+    highlight_icon: "🧡"
+    print_year: "Anno di stampa"
+    title: "Titolo"
+    authors: "Autore/i"
+    format: "Formato"
+    isbn: "ISBN"
+
   form:
     label:
       first_name: "Nome"
