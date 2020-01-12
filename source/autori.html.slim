@@ -15,7 +15,7 @@ section
       th Nome/Pseudonimo
       th Paese
     tbody
-      - authors.each do |author|
+      - authors.sort_by{ |a| [a.sort_by, a.alias, a.full_name] }.each do |author|
         - pubs = dato.books.select{|b| b.authors.include?(author)}.count
         - if pubs > 0
           tr
@@ -24,4 +24,3 @@ section
             td #{author.country}
 
 = partial "partials/cta"
-
