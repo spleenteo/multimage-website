@@ -43,7 +43,16 @@ it:
     by: "Di "
     edited_by: "A cura di "
     illustrated_by: "Illustrato da "
-
+    first_print_year: "Prima edizione"
+    reprint: "Ristampa"
+    original_lang: "Lingua originale"
+    original_title: "Titolo originale"
+    translator: "Tradduttore"
+    copyright: "Copyright"
+    illustrator: "Illustratore"
+    cover_designer: "Grafica di copertina"
+    layout_artist: "Impaginatore"
+    pages: "Pagine"
   form:
     label:
       first_name: "Nome"

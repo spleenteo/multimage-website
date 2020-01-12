@@ -56,18 +56,18 @@ section
 section
   h4 Dettagli edizione
   ul
-    = show_book_detail("EAN", book.isbn)
-    = show_book_detail("Anno", book.print_year)
-    = show_book_detail("Prima edizione", book.first_print_year)
-    = show_book_detail("Ristampa", book.reprint)
-    = show_book_detail("Lingua originale", book.original_lang)
-    = show_book_detail("Titolo originale", book.original_title)
-    = show_book_detail("Traduttore", book.translator)
-    = show_book_detail("Copyright", book.copyright)
+    = show_book_detail(t("book.isbn"), book.isbn)
+    = show_book_detail(t("book.print_year"), book.print_year)
+    = show_book_detail(t("book.first_print_year"), book.first_print_year)
+    = show_book_detail(t("book.reprint"), book.reprint)
+    = show_book_detail(t("book.original_lang"), book.original_lang)
+    = show_book_detail(t("book.original_title"), book.original_title)
+    = show_book_detail(t("book.translator"), book.translator)
+    = show_book_detail(t("book.copyright"), book.copyright)
 
   h4 Info grafica
   ul
-    = show_book_detail("Pagine", book.pages)
-    = show_book_detail("Illustratore", book.illustrator)
-    = show_book_detail("Grafica copertina", book.cover_designer)
-    = show_book_detail("Impaginazione", book.layout_artist)
+    = show_book_detail(t("book.pages"), book.pages)
+    = show_book_detail(t("book.illustrator"), book.illustrator)
+    = show_book_detail(t("book.cover_designer"), book.cover_designer)
+    = show_book_detail(t("book.layout_artist"), book.layout_artist)
