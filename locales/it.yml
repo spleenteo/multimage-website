@@ -40,6 +40,9 @@ it:
     authors: "Autore/i"
     format: "Formato"
     isbn: "ISBN"
+    by: "Di "
+    edited_by: "A cura di "
+    illustrated_by: "Illustrato da "
 
   form:
     label:
