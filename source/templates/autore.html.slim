@@ -12,20 +12,19 @@ header
         background-image: url("#{author.picture.file.fit('crop').crop('edges').blur(700).width(1200).height(400).format('pjpg').to_url }");
       }
   h1 = author_name(author)
-  p Proveniente da #{author.country}, ha pubblicato #{pluralize("libro", books.count)} con Multimage
+  p #{t("author.from_country", country: author.country)}, ha pubblicato #{pluralize("libro", books.count)} con Multimage
 
   - if author.picture.present?
     = image_tag author.picture.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
 
 section
-  h4 Biografia
+  h4 = t("author.biography")
   article  = author.biography
 
-
 section
-    h4 #{pluralize("libro", books.count)} di questo autore
+    h4 #{pluralize(t("book.book"), books.count)} #{t("author.by")}
     ul
       - books.sort_by(&:title).each do |book|
-        li #{link_to book.title, "/libri/#{book.slug}"} #{"(curatore)" if book.edited_by.present?}
+        li #{link_to book.title, "/libri/#{book.slug}"} #{t("author.curator") if book.edited_by.present?}
 
 = partial "partials/cta"
