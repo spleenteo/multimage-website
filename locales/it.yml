@@ -69,6 +69,10 @@ it:
     reprint: "Ristampa"
     title: "Titolo"
     translator: "Tradduttore"
+  collection:
+    collection: "Collana"
+    description: "Descrizione"
+    name: "Nome"
   form:
     label:
       first_name: "Nome"
