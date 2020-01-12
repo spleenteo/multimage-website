@@ -2,11 +2,15 @@ module MultimageHelpers
   module_function
 
   def book_price(book)
+=begin
+TODO: logica da progettare quando ci sarà l'ecommerce
     if book.discount.present? and book.discount > 0
       p = (book.price * book.discount) / 100;
     else
       p = book.price
     end
+=end
+    p = book.price
     number_to_currency(p, :unit => "€", :locale=>"it")
   end
 
