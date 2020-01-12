@@ -63,10 +63,11 @@ section
     = show_book_detail("Lingua originale", book.original_lang)
     = show_book_detail("Titolo originale", book.original_title)
     = show_book_detail("Traduttore", book.translator)
+    = show_book_detail("Copyright", book.copyright)
 
   h4 Info grafica
   ul
-    = show_book_detail("Copyright", book.copyright)
     = show_book_detail("Pagine", book.pages)
+    = show_book_detail("Illustratore", book.illustrator)
     = show_book_detail("Grafica copertina", book.cover_designer)
     = show_book_detail("Impaginazione", book.layout_artist)
