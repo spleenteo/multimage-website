@@ -24,7 +24,7 @@ module MultimageHelpers
   def link_to_authors(authors)
     authors.map do |author|
       link_to author_name(author), "/autori/#{author.slug}"
-    end.to_sentence
+    end.to_sentence(two_words_connector: ' e ', last_word_connector: ' e ')
   end
 
   def author_name(author)
