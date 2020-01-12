@@ -11,6 +11,8 @@
       background-image: url("#{book.cover_image.file.fit('crop').crop('edges').blur(700).width(1200).height(400).format('pjpg').to_url}");
     }
 
+  p #{book.subtitle}#{" – " if book.subtitle.present?}#{book.description}
+
   - if book.archive
     hr
     div: strong Attenzione: questo libro è fuori catalogo e non verrà ristampato
@@ -21,7 +23,7 @@
     hr
 
   p collana #{link_to book.collection.name, "/collane/#{book.collection.slug}"}
-  p = book.description
+
   figure
     = image_tag book.cover_image.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
 
