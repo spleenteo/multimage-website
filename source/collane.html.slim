@@ -7,19 +7,19 @@
 section
   = partial "partials/page_header", locals: {title: dato.collections_index.title, subtitle: dato.collections_index.subtitle }
 
-  p: strong  #{pluralize("Collana", collections.count)}
+  p: strong  #{pluralize(t("collection.collection"), collections.count)}
   table
     thead
-      th Libri
-      th Nome
-      th Descrizione
+      th = t("collection.name")
+      th = t("collection.description")
+      th
     tbody
       - collections.each do |col|
         - pubs = dato.books.select{|b| b.collection == col}.count
         - if pubs > 0
           tr
-            td #{pluralize("libro", pubs)}
             td = link_to col.name, "/collane/#{col.slug}"
             td = col.description
+            td #{pluralize(t("book.book"), pubs)}
 
 = partial "partials/cta"
