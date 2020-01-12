@@ -15,11 +15,11 @@
 
   - if book.archive
     hr
-    div: strong Attenzione: questo libro è fuori catalogo e non verrà ristampato
+    div: strong = t("ui.archived_book")
     hr
   - elsif book.unavailable
     hr
-    div: strong Attenzione: questo libro è esaurito ma potrebbe essere ristampato nel prossimo futuro
+    div: strong = t("ui.unavailable_book")
     hr
 
   p collana #{link_to book.collection.name, "/collane/#{book.collection.slug}"}
@@ -31,19 +31,19 @@
     ul
       - if book.price.present?
         li
-          = link_to "#{book_price(book)} – formato #{book.format}", "#"
+          = link_to "#{book_price(book)} – #{t("book.format")} #{book.format}", "#"
 
       - if book.format == "Ebook" && book.epub_url.present?
-        li = link_to "Acquista", book.epub_url, target: "_blank"
+        li = link_to t("ui.buy"), book.epub_url, target: "_blank"
 
 - if book.review.present?
   section
-    h4 Quarta di copertina
+    h4 = t("book.back_cover")
     article = book.review
     hr
 
 section
-  h4 = pluralize("Autore", book.authors.count)
+  h4 = pluralize(t("book.author"), book.authors.count)
   - book.authors.each do |author|
     div
       figure
@@ -51,10 +51,10 @@ section
       h3 = author_name(author)
       p = author.country
       p = truncate_words(author.biography, length: 35)
-      = link_to "Scheda autore", "/autori/#{author.slug}"
+      = link_to t("book.author_page"), "/autori/#{author.slug}"
 
 section
-  h4 Dettagli edizione
+  h4 = t("book.edition_details")
   ul
     = show_book_detail(t("book.isbn"), book.isbn)
     = show_book_detail(t("book.print_year"), book.print_year)
@@ -65,7 +65,7 @@ section
     = show_book_detail(t("book.translator"), book.translator)
     = show_book_detail(t("book.copyright"), book.copyright)
 
-  h4 Info grafica
+  h4 = t("book.edition_graphics_details")
   ul
     = show_book_detail(t("book.pages"), book.pages)
     = show_book_detail(t("book.illustrator"), book.illustrator)

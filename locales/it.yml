@@ -32,12 +32,22 @@ it:
     menu_close: "Chiudi"
     menu: "Menu"
 
+  ui:
+    buy: "Acquista"
+    unavailable_book: "Attenzione: questo libro è esaurito ma potrebbe essere ristampato nel prossimo futuro"
+    archived_book: "Attenzione: questo libro è fuori catalogo e non verrà ristampato"
   book:
     authors: "Autore/i"
+    author: "Autore"
+    author_page: "Scheda autore"
+    back_cover: "Quarta di copertine"
     by: "Di "
     copyright: "Copyright"
     cover_designer: "Grafica di copertina"
+    ebook: "Ebook"
     edited_by: "A cura di "
+    edition_details: "Dettagli edizione"
+    edition_graphics_details: "Dettagli grafica"
     first_print_year: "Prima edizione"
     format: "Formato"
     highlight_icon: "🧡"
