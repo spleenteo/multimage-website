@@ -11,9 +11,9 @@ section
   p: strong  #{pluralize("autore", authors.count)}
   table
     thead
-      th Libri
-      th Nome/Pseudonimo
-      th Paese
+      th = t("book.books")
+      th = t("book.author/alias")
+      th = t("book.country")
     tbody
       - authors.sort_by{ |a| [a.sort_by, a.alias, a.full_name] }.each do |author|
         - pubs = dato.books.select{|b| b.authors.include?(author)}.count
