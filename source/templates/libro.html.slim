@@ -59,6 +59,8 @@ section
     = show_book_detail(t("book.isbn"), book.isbn)
     = show_book_detail(t("book.print_year"), book.print_year)
     = show_book_detail(t("book.first_print_year"), book.first_print_year)
+    - if book.edition > 1
+      = show_book_detail(t("book.edition"), "#{book_edition(book)} #{t("book.edition").downcase}")
     = show_book_detail(t("book.reprint"), book.reprint)
     = show_book_detail(t("book.original_lang"), book.original_lang)
     = show_book_detail(t("book.original_title"), book.original_title)

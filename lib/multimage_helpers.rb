@@ -1,6 +1,11 @@
 module MultimageHelpers
   module_function
 
+  def book_edition(book)
+    e = book.edition
+    "#{e}<sup>a</sup>"
+  end
+
   def book_price(book)
 =begin
 TODO: logica da progettare quando ci sarà l'ecommerce

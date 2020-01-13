@@ -6,6 +6,7 @@
       th = t("book.print_year")
       th = t("book.title")
       th = t("book.authors")
+      th = t("book.edition")
       th = t("book.format")
       th = t("book.isbn")
     tbody
@@ -15,5 +16,6 @@
           td #{book.print_year}
           td = link_to book.title, "/libri/#{book.slug}"
           td = link_to_authors(book)
+          td = book_edition(book)
           td = book.format
           td #{book.isbn}
