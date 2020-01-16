@@ -69,7 +69,19 @@ section
     = show_book_detail(t("book.original_lang"), book.original_lang)
     = show_book_detail(t("book.original_title"), book.original_title)
     = show_book_detail(t("book.translator"), book.translator)
-    = show_book_detail(t("book.copyright"), book.copyright)
+    - if book.license.present?
+      - if book.license.code == "c"
+        = show_book_detail(t("book.copyright"), book.copyright)
+      - else
+        //TODO: si può rifactorare con l'helper show_book_detail?
+        li
+          a rel="license" target="_blank" href="https://creativecommons.org/licenses/#{book.license.code}/4.0/deed.it"
+            img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/#{book.license.code}/4.0/88x31.png"
+          br
+          span=> t("book.license_copy")
+          a rel="license" target="_blank" href="https://creativecommons.org/licenses/#{book.license.code}/4.0/deed.it"= "Creative Commons #{book.license.name}"
+          span .
+
 
   h4 = t("book.edition_graphics_details")
   ul

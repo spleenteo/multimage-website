@@ -66,6 +66,7 @@ it:
     illustrator: "Illustratore"
     isbn: "ISBN"
     layout_artist: "Impaginatore"
+    license_copy: "Quest’opera è distribuita con Licenza"
     original_lang: "Lingua originale"
     original_title: "Titolo originale"
     pages: "Pagine"
