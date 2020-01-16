@@ -71,6 +71,8 @@ it:
     pages: "Pagine"
     print_year: "Anno di stampa"
     reprint: "Ristampa"
+    reprint_circulation: "Tiratura"
+    reprint_year: "Anno di ristampa"
     title: "Titolo"
     translator: "Traduttore"
   collection:

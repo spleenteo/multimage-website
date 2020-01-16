@@ -61,7 +61,11 @@ section
     = show_book_detail(t("book.first_print_year"), book.first_print_year)
     - if book.edition > 1
       = show_book_detail(t("book.edition"), "#{book_edition(book)} #{t("book.edition").downcase}")
-    = show_book_detail(t("book.reprint"), book.reprint)
+    - book.reprints.each do |reprint|
+      - if reprint.item_type.api_key == "reprint"
+        = show_book_detail(t("book.reprint"), "#{reprint.number}<sup>a</sup> #{t("book.reprint").downcase}")
+        = show_book_detail(t("book.reprint_circulation"), reprint.circulation)
+        = show_book_detail(t("book.reprint_year"), reprint.year.year)
     = show_book_detail(t("book.original_lang"), book.original_lang)
     = show_book_detail(t("book.original_title"), book.original_title)
     = show_book_detail(t("book.translator"), book.translator)
