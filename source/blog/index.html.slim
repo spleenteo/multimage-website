@@ -1,0 +1,28 @@
+- content_for(:head)
+  == dato_meta_tags(dato.authors_index)
+
+//TODO: Questo indice mostra temporaneamente articoli che non ci interessano nel prossimo futuro.
+// Va modificata la query per prendere solo gli articoli nuovi
+
+- posts = dato.blog_post_olds.sort_by(&:updated_at).reverse
+/= partial "partials/navbar"
+
+= partial "partials/page_header",
+  locals: {title: "Magazine", subtitle: dato.authors_index.subtitle }
+
+section
+  p: strong  #{pluralize("articolo", posts.count)}
+  table
+    thead
+      th Titolo
+      th Data
+      th Autore
+    tbody
+      - posts.each do |post|
+        tr
+          td = link_to post.title, "/blog/posts/#{post.slug}"
+          td = post.created_at
+          - if post.author.present?
+            td = post.author.name
+
+= partial "partials/cta"

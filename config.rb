@@ -74,6 +74,11 @@ dato.tap do |dato|
       "templates/autore.html",
       locals: { author: author }
   end
+  dato.blog_post_olds.each do |post|
+    proxy "blog/posts/#{post.slug}/index.html",
+      "templates/old_post.html",
+      locals: { post: post }
+  end
 end
 
 # dato.tap do |dato|

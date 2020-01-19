@@ -1,0 +1,21 @@
+- content_for(:head)
+  == dato_meta_tags(post)
+
+/ = partial "partials/navbar"
+
+hr
+strong Questo post è archiviato, continua sul suono Magazine di Multimage
+hr
+= partial "partials/page_header",
+  locals: {title: post.title, subtitle: post.abstract } do
+  p del #{post.created_at}
+  - if post.author.present?
+    p di #{post.author.name}
+
+
+article
+  - if post.featured_image.present?
+    figure
+      img alt="" src=post.featured_image.file.fit('crop').width(400).format('pjpg').to_url
+
+  = post.body_old
