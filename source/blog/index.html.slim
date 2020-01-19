@@ -1,7 +1,10 @@
 - content_for(:head)
   == dato_meta_tags(dato.authors_index)
 
-- posts = dato.blog_posts.sort_by(&:created_at).reverse
+//TODO: Questo indice mostra temporaneamente articoli che non ci interessano nel prossimo futuro.
+// Va modificata la query per prendere solo gli articoli nuovi
+
+- posts = dato.blog_post_olds.sort_by(&:updated_at).reverse
 /= partial "partials/navbar"
 
 = partial "partials/page_header",
@@ -17,7 +20,7 @@ section
     tbody
       - posts.each do |post|
         tr
-          td = link_to post.title, "/blog/#{post.slug}"
+          td = link_to post.title, "/blog/posts/#{post.slug}"
           td = post.created_at
           - if post.author.present?
             td = post.author.name
