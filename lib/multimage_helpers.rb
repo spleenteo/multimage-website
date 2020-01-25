@@ -45,6 +45,26 @@ TODO: logica da progettare quando ci sarà l'ecommerce
       )
   end
 
+  def show_book_license(book)
+    if book.license.present?
+      if book.license.code == "c"
+        show_book_detail(t("book.copyright"), book.copyright)
+      else
+        license_url = "https://creativecommons.org/licenses/#{book.license.code}/4.0/deed.it"
+        license_img_url = "https://i.creativecommons.org/l/#{book.license.code}/4.0/88x31.png"
+        content_tag :li do
+          concat(
+            content_tag(:a, image_tag(license_img_url, style: "border-width: 0;", alt: "Creative Commons License"), rel: "license", target: "_blank", href: license_url) +
+            tag(:br) +
+            content_tag(:span, t("book.license_copy")) +" "+
+            content_tag(:a, "Creative Commons #{book.license.name}", rel: "license", target: "_blank", href: license_url) +
+            content_tag(:span, ".")
+          )
+        end
+      end
+    end
+  end
+
   def author_name(author)
     author.alias.present? ? author.alias : author.full_name
   end
