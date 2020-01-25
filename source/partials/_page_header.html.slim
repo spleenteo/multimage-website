@@ -1,9 +1,8 @@
 - title ||= nil
 - subtitle ||= nil
 
-header
-  h1 = title
-  p = subtitle if subtitle.present?
+header.wrap.margin--both-3
+  h1.alpha = title
+  p.beta = subtitle if subtitle.present?
   - if block_given?
     = yield
-  hr
