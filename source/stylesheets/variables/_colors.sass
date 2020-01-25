@@ -1,12 +1,16 @@
 // Bemo variables for Colors variant
 // Use inside blocks, utilities and mixins
 //
-$enable-color-gradients: false !default
+$enable-color-gradients: true !default
 
 // Color variables
 $white-color:    #ffffff !default
 $gray-color:     #6c757d !default
 $black-color:    #000000 !default
+$orange-color:   #e25f00 !default
+$beige-color:    #ab9f84 !default
+$danger-color:   #be2048 !default
+
 
 // Base map color
 $base-colors: () !default
@@ -14,11 +18,13 @@ $base-colors: map-merge(("white": $white-color, "gray": $gray-color, "black": $b
 
 // Insert the custom color schema inside the bemo-colors map
 $bemo-colors: () !default
+$bemo-colors: map-merge(("primary": $orange-color, "orange": $orange-color, "desert": $beige-color, "danger": $danger-color), $bemo-colors)
 
 // derived
 $all-colors:    map-merge($base-colors, $bemo-colors)
 
 $base-body-color: $black-color !default
+$base-link-color: $orange-color !default
 $base-body-background: $white-color !default
 
 // The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.

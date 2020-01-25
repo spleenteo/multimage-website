@@ -4,11 +4,12 @@
 - collections = dato.collections
 / = partial "partials/navbar"
 
-section
-  = partial "partials/page_header", locals: {title: dato.collections_index.title, subtitle: dato.collections_index.subtitle }
+= partial "partials/page_header", locals: {title: dato.collections_index.title, subtitle: dato.collections_index.subtitle }
 
-  p: strong  #{pluralize(t("collection.collection"), collections.count)}
-  table
+section.wrap
+
+  .label  #{pluralize(t("collection.collection"), collections.count)}
+  table.table
     thead
       th = t("collection.name")
       th = t("collection.description")
@@ -18,7 +19,7 @@ section
         - pubs = dato.books.select{|b| b.collection == col}.count
         - if pubs > 0
           tr
-            td = link_to col.name, "/collane/#{col.slug}"
+            td: strong = link_to col.name, "/collane/#{col.slug}"
             td = col.description
             td #{pluralize(t("book.book"), pubs)}
 

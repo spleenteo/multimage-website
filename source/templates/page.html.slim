@@ -6,12 +6,14 @@
 = partial "partials/page_header",
   locals: {title: page.title, subtitle: page.subtitle }
 
-article
-  - if page.featured_image.present?
-    figure
-      img alt="" src=page.featured_image.file.fit('crop').width(400).format('pjpg').to_url
+.wrap.margin--bottom-5
+  article.formatted-content
 
-  = page.body
+    - if page.featured_image.present?
+      figure
+        img alt="" src=page.featured_image.file.fit('crop').width(400).format('pjpg').to_url
+
+    = page.body
 
 - if page.layout == "paypal"
   = partial "partials/cta"

@@ -4,46 +4,49 @@
 / = partial "partials/navbar"
 
 = partial "partials/page_header",
-  locals: {title: book.title, subtitle: link_to_authors(book) } do
-
-  css:
-    .content_5{
-      background-image: url("#{book.cover_image.file.fit('crop').crop('edges').blur(700).width(1200).height(400).format('pjpg').to_url}");
-    }
-
-  p #{book.subtitle}#{" – " if book.subtitle.present?}#{book.description}
+  locals: {title: book.title, subtitle: link_to_authors(book) }
 
   - if book.archive
-    hr
-    div: strong = t("ui.archived_book")
-    hr
+    div.label--danger: strong = t("ui.archived_book")
   - elsif book.unavailable
     hr
-    div: strong = t("ui.unavailable_book")
+    div.label--danger: strong = t("ui.unavailable_book")
     hr
 
-  p collana #{link_to book.collection.name, "/collane/#{book.collection.slug}"}
+css:
+  .showcase{
+    background-image: url("#{book.cover_image.file.fit('crop').crop('edges').blur(700).width(1200).height(400).format('pjpg').to_url}");
+    background-size: cover;
+  }
 
-  figure
-    = image_tag book.cover_image.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
+.showcase.padding--both-2
+  .wrap
+    .grid
+      .grid__item.lap-6-12
+        figure
+          = image_tag book.cover_image.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
 
-  - if !book.archive
-    ul
-      - if book.price.present?
-        li
-          = link_to "#{book_price(book)} – #{t("book.format")} #{book.format}", "#"
 
-      - if book.format == "Ebook" && book.epub_url.present?
-        li = link_to t("ui.buy"), book.epub_url, target: "_blank"
+      .grid__item.lap-6-12
+        .formatted-content #{book.subtitle}#{" – " if book.subtitle.present?}#{book.description}
+        p collana #{link_to book.collection.name, "/collane/#{book.collection.slug}"}
+
+        - if !book.archive
+          ul
+            - if book.price.present?
+              li
+                = link_to "#{book_price(book)} – #{t("book.format")} #{book.format}", "#"
+
+            - if book.format == "Ebook" && book.epub_url.present?
+              li = link_to t("ui.buy"), book.epub_url, target: "_blank"
 
 - if book.review.present?
-  section
-    h4 = t("book.back_cover")
-    article = book.review
-    hr
+  section.wrap.margin--both-5
+    h4.beta = t("book.back_cover")
+    article.padding--both-2.formatted-content = book.review
 
-section
-  h4 = pluralize(t("book.author"), book.authors.count)
+section.wrap.margin--both-5
+  h4.beta = pluralize(t("book.author"), book.authors.count)
   - book.authors.each do |author|
     div
       figure
@@ -53,27 +56,30 @@ section
       p = truncate_words(author.biography, length: 35)
       = link_to t("book.author_page"), "/autori/#{author.slug}"
 
-section
-  h4 = t("book.edition_details")
-  ul
-    = show_book_detail(t("book.isbn"), book.isbn)
-    = show_book_detail(t("book.print_year"), book.print_year)
-    = show_book_detail(t("book.first_print_year"), book.first_print_year)
-    - if book.edition > 1
-      = show_book_detail(t("book.edition"), "#{book_edition(book)} #{t("book.edition").downcase}")
-    - book.reprints.each do |reprint|
-      - if reprint.item_type.api_key == "reprint"
-        = show_book_detail(t("book.reprint"), "#{reprint.number}<sup>a</sup> #{t("book.reprint").downcase}")
-        = show_book_detail(t("book.reprint_circulation"), reprint.circulation)
-        = show_book_detail(t("book.reprint_year"), reprint.year.year)
-    = show_book_detail(t("book.original_lang"), book.original_lang)
-    = show_book_detail(t("book.original_title"), book.original_title)
-    = show_book_detail(t("book.translator"), book.translator)
-    = show_book_license(book)
+section.wrap.margin--both-5
+  .grid
+    .grid__item.lap-6-12
+      h4.gamma = t("book.edition_details")
+      ul.padding--both-2
+        = show_book_detail(t("book.isbn"), book.isbn)
+        = show_book_detail(t("book.print_year"), book.print_year)
+        = show_book_detail(t("book.first_print_year"), book.first_print_year)
+        - if book.edition > 1
+          = show_book_detail(t("book.edition"), "#{book_edition(book)} #{t("book.edition").downcase}")
+        - book.reprints.each do |reprint|
+          - if reprint.item_type.api_key == "reprint"
+            = show_book_detail(t("book.reprint"), "#{reprint.number}<sup>a</sup> #{t("book.reprint").downcase}")
+            = show_book_detail(t("book.reprint_circulation"), reprint.circulation)
+            = show_book_detail(t("book.reprint_year"), reprint.year.year)
+        = show_book_detail(t("book.original_lang"), book.original_lang)
+        = show_book_detail(t("book.original_title"), book.original_title)
+        = show_book_detail(t("book.translator"), book.translator)
+        = show_book_license(book)
 
-  h4 = t("book.edition_graphics_details")
-  ul
-    = show_book_detail(t("book.pages"), book.pages)
-    = show_book_detail(t("book.illustrator"), book.illustrator)
-    = show_book_detail(t("book.cover_designer"), book.cover_designer)
-    = show_book_detail(t("book.layout_artist"), book.layout_artist)
+    .grid__item.lap-6-12
+      h4.gamma = t("book.edition_graphics_details")
+      ul.padding--both-2
+        = show_book_detail(t("book.pages"), book.pages)
+        = show_book_detail(t("book.illustrator"), book.illustrator)
+        = show_book_detail(t("book.cover_designer"), book.cover_designer)
+        = show_book_detail(t("book.layout_artist"), book.layout_artist)
