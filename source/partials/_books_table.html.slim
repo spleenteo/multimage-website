@@ -1,6 +1,6 @@
 - if books.present?
-  p: strong = pluralize("libro", books.count)
-  table
+  .label.margin--bottom-1 = pluralize("libro", books.count)
+  table.table
     thead
       th = t("book.highlight")
       th = t("book.print_year")
@@ -12,10 +12,10 @@
     tbody
       - books.each do |book|
         tr
-          td = book.highlight == true ? t("book.highlight_icon") : ""
+          td.align--center = book.highlight == true ? t("book.highlight_icon") : ""
           td #{book.print_year}
-          td = link_to book.title, "/libri/#{book.slug}"
+          td: strong = link_to book.title, "/libri/#{book.slug}"
           td = link_to_authors(book)
-          td = book_edition(book)
+          td.align--center = book_edition(book)
           td = book.format
           td #{book.isbn}

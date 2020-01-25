@@ -7,7 +7,7 @@
 = partial "partials/page_header",
   locals: {title: dato.ebooks_index.title, subtitle: dato.ebooks_index.subtitle }
 
-section
+section.wrap
   = partial "partials/books_table", locals: {books: available_ebooks}
 
 = partial "partials/cta"

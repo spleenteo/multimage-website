@@ -7,9 +7,9 @@
 = partial "partials/page_header",
   locals: {title: dato.authors_index.title, subtitle: dato.authors_index.subtitle }
 
-section
-  p: strong  #{pluralize("autore", authors.count)}
-  table
+section.wrap
+  .label  #{pluralize("autore", authors.count)}
+  table.table
     thead
       th = t("book.books")
       th = t("book.author/alias")
@@ -20,7 +20,7 @@ section
         - if pubs > 0
           tr
             td #{pluralize("libro", pubs)}
-            td = link_to author_name(author), "/autori/#{author.slug}"
+            td: strong = link_to "#{author.sort_by} – #{author_name(author)}", "/autori/#{author.slug}"
             td #{author.country}
 
 = partial "partials/cta"

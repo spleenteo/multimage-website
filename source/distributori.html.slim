@@ -6,9 +6,9 @@
 
 = partial "partials/page_header", locals: {title: dato.suppliers_index.title, subtitle: dato.suppliers_index.subtitle }
 
-section
-  p: strong  #{pluralize("Distributore", collections.count)}
-  table
+section.wrap
+  .label  #{pluralize("Distributore", collections.count)}
+  table.table
     thead
       th = t("distributor.location")
       th
