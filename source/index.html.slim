@@ -1,20 +1,24 @@
 - content_for(:head)
   == dato_meta_tags(dato.home)
 
-header
-  div.mb-2 = image_tag "logo.png"
-  h1 = dato.home.title
-  p = dato.home.claim
-  ul
-    li: a href="/libri/"  I nostri libri
-    li: a href="/info/chi-siamo/"  Chi siamo
+.wrap
+  header
+    .grid
+      .grid__item.lap-6-12
+        div.mb-2 = image_tag "logo.png"
+        h1.alpha = dato.home.title
+        .margin--both-2: p = dato.home.claim
+        ul
+          li = link_to "I nostri libri", "/libri/", class: "button button--primary primary"
+          li = link_to "Chi siamo", "/info/chi-siamo/", class: "button--primary--rounded--outline"
 
-  div
-    - if dato.home.banner_url.present?
-      = link_to dato.home.banner_url do
-        = image_tag dato.home.banner.file.fit('crop').width(400).format('pjpg').to_url
-    - else
-        = image_tag dato.home.banner.file.fit('crop').width(400).format('pjpg').to_url
+      .grid__item.lap-6-12
+        div
+          - if dato.home.banner_url.present?
+            = link_to dato.home.banner_url do
+              = image_tag dato.home.banner.file.fit('crop').width(400).format('pjpg').to_url
+          - else
+              = image_tag dato.home.banner.file.fit('crop').width(400).format('pjpg').to_url
 
 = partial "partials/cta"
 / = partial "partials/highlight"
