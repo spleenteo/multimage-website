@@ -4,24 +4,30 @@
 / = partial "partials/navbar"
 
 - books = dato.books.select{|b| b.authors.include?(author)}
+- subtitle = "#{t("author.from_country", country: author.country)}, ha pubblicato #{pluralize("libro", books.count)} con Multimage"
 
-header
-  - if author.picture.present?
-    css:
-      .content_5{
-        background-image: url("#{author.picture.file.fit('crop').crop('edges').blur(700).width(1200).height(400).format('pjpg').to_url }");
-      }
-  h1 = author_name(author)
-  p #{t("author.from_country", country: author.country)}, ha pubblicato #{pluralize("libro", books.count)} con Multimage
+= partial "partials/page_header",
+  locals: {title: author_name(author), subtitle: subtitle }
 
-  - if author.picture.present?
-    = image_tag author.picture.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
+- if author.picture.present?
+  css:
+    .showcase{
+      background-image: url("#{author.picture.file.fit('crop').crop('edges').blur(700).width(1200).height(400).format('pjpg').to_url }");
+      background-size: cover;
+    }
 
-section
-  h4 = t("author.biography")
-  article  = author.biography
+.showcase.padding--both-2
+  .wrap
+    .grid
+      .grid__item.lap-6-12
+        - if author.picture.present?
+          = image_tag author.picture.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
+      .grid__item.lap-6-12
+        section
+          h4 = t("author.biography")
+          article.formatted-content  = author.biography
 
-section
+section.wrap.margin--both-5
     h4 #{pluralize(t("book.book"), books.count)} #{t("author.by")}
     ul
       - books.sort_by(&:title).each do |book|
