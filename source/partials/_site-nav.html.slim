@@ -1,69 +1,57 @@
 nav.site-nav
   .wrap
     .site-nav__inner
-      - if false
-        = link_to "#",
-          class: "site-nav__menu-toggler js-nav-toggler--left" do
-          = i("hamburger")
-        .site-nav__left
-          = link_to locale_path("/"),
-            class: "site-nav__logo",
-            title: t('nav.home')
-              = inline_svg("logo.png", id: 'site_nav_logo', title: 'LOGO')
+      = link_to "#",
+        class: "site-nav__menu-toggler js-nav-toggler--left" do
+        = i("hamburger")
+      ul.site-nav__menu
+        li.site-nav__menu__item
+          = active_link_to t('nav.home'),
+            locale_path("/"),
+            class: "site-nav__menu__link"
 
-      .site-nav__right
-        .site-nav__topbar
+        li.site-nav__menu__item
+          = active_link_to t('nav.books'),
+            locale_path("/libri/"),
+            class: "site-nav__menu__link"
 
-        ul.site-nav__menu
-          li.site-nav__menu__item
-            = active_link_to t('nav.home'),
-              locale_path("/"),
-              class: "site-nav__menu__link"
+        li.site-nav__menu__item
+          = active_link_to t('nav.highlights'),
+            locale_path("/libri/highlights"),
+            class: "site-nav__menu__link"
 
-          li.site-nav__menu__item
-            = active_link_to t('nav.books'),
-              locale_path("/libri/"),
-              class: "site-nav__menu__link"
+        li.site-nav__menu__item
+          = link_to t('nav.ebooks'),
+            locale_path("/libri/ebooks"),
+            class: "site-nav__menu__link"
 
-          li.site-nav__menu__item
-            = active_link_to t('nav.highlights'),
-              locale_path("/libri/highlights"),
-              class: "site-nav__menu__link"
+        li.site-nav__menu__item
+          = active_link_to t('nav.archive'),
+            locale_path("/libri/archivio"),
+            class: "site-nav__menu__link"
 
-          li.site-nav__menu__item
-            = link_to t('nav.ebooks'),
-              locale_path("/libri/ebooks"),
-              class: "site-nav__menu__link"
+        li.site-nav__menu__item
+          = active_link_to t('nav.collections'),
+            locale_path("/collane/"),
+            class: "site-nav__menu__link"
 
-          li.site-nav__menu__item
-            = active_link_to t('nav.archive'),
-              locale_path("/libri/archivio"),
-              class: "site-nav__menu__link"
+        li.site-nav__menu__item
+          = active_link_to t('nav.authors'),
+            locale_path("/autori/"),
+            class: "site-nav__menu__link"
 
-          li.site-nav__menu__item
-            = active_link_to t('nav.collections'),
-              locale_path("/collane/"),
-              class: "site-nav__menu__link"
+        li.site-nav__menu__item
+          = active_link_to t('nav.distributors'),
+            locale_path("/distributori/"),
+            class: "site-nav__menu__link"
 
-          li.site-nav__menu__item
-            = active_link_to t('nav.authors'),
-              locale_path("/autori/"),
-              class: "site-nav__menu__link"
-
-          li.site-nav__menu__item
-            = active_link_to t('nav.distributors'),
-              locale_path("/distributori/"),
-              class: "site-nav__menu__link"
-
-          li
-            span = t('nav.info')
-            ul
+        li.site-nav__menu__item
+          .site-nav__menu__link--no-link
+            span= t('nav.info')
+            ul.site-nav__submenu
               - dato.pages.sort_by(&:position).each_slice(3) do |sub_collection|
                 - sub_collection.each do |item|
-                  li
-                    a href="/info/#{item.slug}" = item.title
-
-
-      = link_to "#",
-        class: "site-nav__menu-toggler js-nav-toggler--right" do
-        i.icon--hamburger
+                  li.site-nav__submenu__item
+                    = active_link_to item.title,
+                      locale_path("/info/#{item.slug}"),
+                      class: "site-nav__submenu__link"
