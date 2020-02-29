@@ -46,7 +46,7 @@
 
       li.aside-nav__menu__item
         .aside-nav__menu__link--no-link
-          span= t('nav.info')
+          span= "#{t('nav.info')} #{i('chevron-down')}"
           ul.aside-nav__submenu
             - dato.pages.sort_by(&:position).each_slice(3) do |sub_collection|
               - sub_collection.each do |item|
