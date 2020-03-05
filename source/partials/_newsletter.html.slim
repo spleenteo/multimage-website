@@ -1,14 +1,16 @@
-section.margin--both-5
-  .newsletter-hero
-    .wrap
+section.wrap.margin--both-5
+  .card
+    .card__header
+      h2.card__header__title Newsletter
+
+    .card__body
+      p Iscriviti alla newsletter di Multimage per ricevere le ultime novità, offerte speciali ed eventi culturali che organizziamo. Inviamo pochissime email l'anno, <strong>niente spam, promesso!</strong>
+
+    .card__footer
       form action="http://multimage.us2.list-manage1.com/subscribe/post?u=2e642198d3dca9633e51d015a&amp;id=ff885584a7" method="post" name="mc-embedded-subscribe-form" target="_blank"
         fieldset
-          legend Newsletter
-          h2 La nostra Newsletters
-          p Iscriviti alla newsletter di Multimage per ricevere le ultime novità, offerte speciali ed eventi culturali che organizziamo. Inviamo pochissime email l'anno, <strong>niente spam, promesso!</strong>
-
           input#email name="EMAIL" placeholder=("La tua email") required="" type="email"
           input#mce-FNAME name="FNAME" placeholder=("Il tuo nome") required="" type="text"
 
-          button#mc-embedded-subscribe type="submit" name="subscribe" Iscriviti
+          button#mc-embedded-subscribe.button--primary type="submit" name="subscribe" Iscriviti
           a href="http://us2.campaign-archive1.com/home/?u=2e642198d3dca9633e51d015a&amp;id=ff885584a7" target="_blank" title="View previous campaigns" Consulta l'archivio delle newsletter già inviate
