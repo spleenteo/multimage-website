@@ -1,0 +1,23 @@
+.simple-table
+  +padding(2)
+  border: 1px solid $border-l-color
+
+.simple-table__item
+  display: flex
+  justify-content: space-between
+  border-bottom: 1px solid $border-l-color
+  +vertical-padding(0.8)
+
+  &:last-child
+    border-bottom: none
+
+.simple-table__label
+  text-transform: uppercase
+  +horizontal-padding(1)
+
+.simple-table__right
+  color: $cyan-color
+  font-weight: bold
+  text-align: right
+  white-space: nowrap
+  +horizontal-padding(1)

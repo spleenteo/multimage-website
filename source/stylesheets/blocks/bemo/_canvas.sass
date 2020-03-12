@@ -1,0 +1,28 @@
+.canvas
+  overflow: hidden
+  position: relative
+
+  &.is-shifted
+    +position(absolute, 0px 0px 0px 0px)
+    overflow: hidden
+
+.canvas__main
+  @include transition()
+
+.canvas__aside
+  @include transition(transform 0.5s cubic-bezier(.55,0,.1,1), box-shadow 0.5s cubic-bezier(.55,0,.1,1))
+  background-color: $gray-color
+  bottom: 0
+  box-shadow: 0 0 0 transparent
+  overflow-y: auto
+  position: absolute
+  top: 0
+  z-index: 2
+
+  .canvas.is-shifted &
+    box-shadow: 3px 0 5px rgba($gray-color, 0.5)
+
++canvas-layout(290px)
+
++at-breakpoint(lap)
+  +canvas-layout(400px)

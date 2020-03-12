@@ -1,0 +1,101 @@
+.panel
+  +vertical-padding(2)
+
+.panel__header
+  +margin-bottom(2)
+  display: flex
+  align-items: center
+  justify-content: flex-start
+
+.panel__title
+  +heading-font-family
+  +font-size(beta)
+
+.panel__number
+  +number-circle
+  +margin-left(2)
+
+.panel__content
+  +margin-bottom(2)
+
+.panel__subtitle
+  color: $blue-color
+  text-transform: uppercase
+  letter-spacing: 1.5px
+  +font-size(smallprint)
+
+.panel__text
+
+.panel__action
+
+.panel__columns
+  border-bottom: 1px solid $base-body-color
+  width: 100%
+  display: flex
+  justify-content: center
+
+.panel__info
+  +padding(1)
+  display: flex
+
+.panel__info__label
+  +heading-font-family
+  +font-size(gamma)
+  +margin-right(2)
+
+.panel__info__number
+  +font-size(gamma)
+  font-weight: bold
+
+.panel__table
+  +vertical-margin(3)
+
+.panel__table__item
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  justify-content: center
+  +vertical-margin(0.5)
+
+.panel__table__color
+  width: 6px
+  height: 6px
+  border-radius: 50%
+  background-color: $base-body-color
+  +margin-right(1)
+
+  &.is-yellow
+    background-color: $yellow-color
+
+  &.is-green
+    background-color: $green-color
+
+  &.is-red
+    background-color: $red-color
+
+  &.is-orange
+    background-color: $orange-color
+
+.panel__table__label
+  text-transform: uppercase
+  letter-spacing: 2px
+  +margin-right(4)
+  flex-basis: 80px
+
+.panel__table__amount
+  +margin-right(1)
+  flex-basis: 45px
+  +font-size(delta)
+
+.panel__table__unit
+  +font-size(smallprint)
+
+.panel__logo
+  +margin-bottom(3)
+
+.panel__logo__link
+  display: block
+  +vertical-margin(1)
+
+.panel__logo__link__image
+  max-height: 90px

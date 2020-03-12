@@ -1,0 +1,13 @@
+.text-link
+  +inline-block
+  +font-size(smallprint)
+  text-transform: uppercase
+  letter-spacing: 2px
+
+  &:after
+    content: " "
+    +inline-block
+    +margin-left(1)
+    height: 1px
+    width: 40px
+    background-color: $blue-color

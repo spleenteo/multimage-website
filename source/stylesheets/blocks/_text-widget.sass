@@ -1,0 +1,33 @@
+.text-widget
+  display: block
+
+.text-widget__title
+  +heading-font-family
+  +font-size(gamma)
+  +margin-bottom(2)
+
+.text-widget__subtitle
+  +font-size(delta)
+  +margin-bottom(2)
+  color: $blue-color
+  text-transform: uppercase
+  letter-spacing: 2px
+
+.text-widget__small-title
+  +margin-bottom(1)
+  color: $blue-color
+  text-transform: uppercase
+  letter-spacing: 2px
+
+.text-widget__content
+
+.text-widget--link
+  @extend .text-widget
+
+  transition: all .2s ease-in-out
+  .no-touchevents &:hover
+    opacity: .8
+
++at-breakpoint(desk)
+  .text-widget__title
+    +font-size(beta)

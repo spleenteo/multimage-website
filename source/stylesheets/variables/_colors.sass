@@ -1,35 +1,51 @@
-// Bemo variables for Colors variant
-// Use inside blocks, utilities and mixins
 //
-$enable-color-gradients: true !default
+// Color system
+//
+$enable-color-gradients: false
 
-// Color variables
-$white-color:    #ffffff !default
-$gray-color:     #6c757d !default
-$black-color:    #000000 !default
-$orange-color:   #e25f00 !default
-$beige-color:    #ab9f84 !default
-$danger-color:   #be2048 !default
+$white-color:    #ffffff
+$gray-color:     #6c757d
+$black-color:    #000000
+$red-color:      #ae0e0e
+$yellow-color:   #cdcdcd
+$green-color: #53be42
+$orange-color: #fa7810
 
+$blue-color: #004881
+$blue-l-color: #005192
+$blue-xl-color: #056BBB
+$darkblue-color: #4A627E
 
-// Base map color
+$cyan-color: #088AF2
+$cyan-l-color: #e7edf4
+$cyan-xl-color: #f0f3f6
+$yellow-color: #FFE947
+$black-color: #343434
+
+$gray-l-color: #e9f1f7
+$gray-alt-color: rgba($gray-color,0.5)
+$gray-xl-color: #f4f8fb
+
+$rev-body-color: $white-color
+
+$border-color: $gray-alt-color
+$border-l-color: rgba($gray-color,0.2)
+
 $base-colors: () !default
-$base-colors: map-merge(("white": $white-color, "gray": $gray-color, "black": $black-color), $base-colors)
+$base-colors: map-merge(("white": $white-color, "gray": $gray-color, "cyan": $cyan-color, "black": $black-color), $base-colors)
 
-// Insert the custom color schema inside the bemo-colors map
 $bemo-colors: () !default
-$bemo-colors: map-merge(("primary": $orange-color, "orange": $orange-color, "desert": $beige-color, "danger": $danger-color), $bemo-colors)
+$bemo-colors: map-merge(("blue": $blue-color, "red": $red-color), $bemo-colors)
 
 // derived
 $all-colors:    map-merge($base-colors, $bemo-colors)
 
-$base-body-color: $black-color !default
-$base-link-color: $orange-color !default
-$base-body-background: $white-color !default
+$base-body-color: $black-color
+$base-body-background: $white-color
 
 // The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
 $yiq-contrasted-threshold: 150 !default
 
 // Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark:    $black-color !default
-$yiq-text-light:   $white-color !default
+$yiq-text-dark:    $black-color
+$yiq-text-light:   $white-color

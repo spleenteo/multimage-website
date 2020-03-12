@@ -1,8 +1,11 @@
-// Bemo font-size utility class
-//
+@each $name in map-keys($heading-font-sizes)
+  $size: map-get($heading-font-sizes, $name)
 
-@each $name in map-keys($font-sizes)
-  $size: map-get($font-sizes, $name)
+  .#{$name}
+    +font-size($name)
+
+@each $name in map-keys($smallprint-font-sizes)
+  $size: map-get($smallprint-font-sizes, $name)
 
   .#{$name}
     +font-size($name)

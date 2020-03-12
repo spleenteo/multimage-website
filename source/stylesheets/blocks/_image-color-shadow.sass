@@ -1,0 +1,50 @@
+.image-color-shadow
+  position: relative
+  +padding-left(2)
+  +padding-bottom(2)
+
+  &:before
+    content: " "
+    +position(absolute, 0 0 0 0)
+    z-index: -1
+    +margin-top(2)
+    +margin-right(2)
+
+  &.is-blue::before
+    background-color: rgba($blue-l-color, 0.2)
+
+  &.is-yellow::before
+    background-color: rgba($yellow-color, 0.2)
+
+  &.is-green::before
+    background-color: rgba($green-color, 0.2)
+
+  &.is-red::before
+    background-color: rgba($red-color, 0.2)
+
+  &.is-gray::before
+    background-color: rgba($gray-alt-color, 0.2)
+
+.image-color-shadow--rev
+  @extend .image-color-shadow
+  +padding-right(2)
+  +padding-left(0)
+  &:before
+    +margin-left(2)
+    +margin-right(0)
+
++at-breakpoint(lap)
+  .image-color-shadow
+    +padding-left(7)
+    +padding-bottom(5)
+
+    &:before
+      +margin-top(5)
+      +margin-right(7)
+
+  .image-color-shadow--rev
+    +padding-right(7)
+    +padding-left(0)
+    &:before
+      +margin-left(7)
+      +margin-right(0)

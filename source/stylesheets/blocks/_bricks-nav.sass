@@ -1,0 +1,29 @@
+.bricks-nav
+  background-color: $gray-l-color
+
+.bricks-nav__item
+  border-bottom: 1px solid $gray-alt-color
+
+.bricks-nav__link
+  display: block
+  +vertical-padding(2)
+  +horizontal-padding(3)
+  text-transform: uppercase
+
+  .no-touchevents &:hover
+    background-color: $cyan-color
+    color: $rev-body-color
+
++at-breakpoint(desk)
+  .bricks-nav
+    background-color: $gray-l-color
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+
+  .bricks-nav__item
+    border-bottom: none
+    border-left: 1px solid $gray-alt-color
+
+    &:last-child
+      border-right: 1px solid $gray-alt-color

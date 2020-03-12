@@ -1,10 +1,10 @@
-// Bemo variables for Wrap utility
 //
+// Wrap Size
+//
+$base-wrap-width:             1380px
 
-$base-wrap-width:             1200px !default
+$wrap-widths: () !default
+$wrap-widths: map-merge(("large": 1920px, "small": 940px), $wrap-widths)
 
-$wrap-widths:                 () !default
-$wrap-widths:                 map-merge(("large": 1920px, "small": 940px), $wrap-widths)
-
-// derived variables
+// derived
 $all-wrap-widths:             map-merge($wrap-widths, ('regular': $base-wrap-width))

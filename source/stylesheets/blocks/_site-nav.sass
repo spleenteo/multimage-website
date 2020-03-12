@@ -1,0 +1,181 @@
+.site-nav
+
+.site-nav__top
+  background-color: $blue-color
+
+.site-nav__top__inner
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-end
+
+.site-nav__top__item
+
+.site-nav__top__link
+  display: block
+  +vertical-padding(0.8)
+  +horizontal-padding(1.5)
+  +font-size(milli)
+  letter-spacing: 1.5px
+  text-transform: uppercase
+
+  &.is-yellow
+    background-color: $yellow-color
+
+  &.is-gray
+    background-color: $gray-color
+    color: $rev-body-color
+
+  &.is-white
+    background-color: $white-color
+
+  svg
+    +margin-right(1)
+    display: none
+
+  span
+    display: none
+
+.site-nav__bottom
+  background-color: $blue-l-color
+
+.site-nav__bottom__inner
+  position: relative
+
+.site-nav__bottom__list
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-end
+
+.site-nav__bottom__list__fl
+  display: block
+  +padding(1)
+
+.site-nav__logo
+  display: block
+  +position(absolute, -20px null null 0 )
+  z-index: 2
+  img
+    width: 110px
+
+.site-nav__menu-toggler
+  display: block
+  color: $rev-body-color
+  +padding(2)
+  +heading-font-family
+
+  .no-touchevents &:hover
+    color: $rev-body-color
+    opacity: .8
+
+.site-nav__menu
+  display: none
+  background-color: $blue-color
+
+  &.is-visible
+    display: block
+
+.site-nav__menu__fl
+  +vertical-padding(2)
+
+.site-nav__menu__fl__item
+  border-bottom: 1px solid $blue-xl-color
+
+.site-nav__menu__fl__link
+  +horizontal-padding(2)
+  +vertical-padding(1)
+  display: block
+  +heading-font-family
+  color: $rev-body-color
+  +font-size(delta)
+
+.site-nav__menu__sl
+  +vertical-padding(1)
+
+.site-nav__menu__sl__link
+  +horizontal-padding(1)
+  +vertical-padding(0.5)
+  +margin-bottom(0.5)
+  display: block
+  color: $rev-body-color
+  text-transform: uppercase
+  +font-size(smallprint)
+
+  .no-touchevents &:hover
+    opacity: .8
+
+.site-nav__menu__sl__wrap
+  +horizontal-padding(2)
+
++at-breakpoint(tab)
+  .site-nav__top__link
+    svg
+      +inline-block
+
++at-breakpoint(lap)
+  .site-nav__top__link
+    span
+      display: inline
+
++at-breakpoint(desk)
+  .site-nav__menu-toggler
+    display: none
+
+  .site-nav__menu
+    display: block
+    +vertical-padding(0)
+
+  .site-nav__menu__fl
+    width: 100%
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-end
+    +padding(0)
+    background-color: $blue-l-color
+
+  .site-nav__menu__fl__item
+    +margin(0)
+    border-bottom: none
+    border-left: 1px solid $blue-xl-color
+    .no-touchevents &:hover
+      .site-nav__menu__fl__link
+        background-color: $cyan-color
+
+      .site-nav__menu__sl
+        display: block
+        background-color: $blue-color
+
+  .site-nav__menu__fl__link
+    +font-size(regular)
+    +vertical-padding(1.5)
+    letter-spacing: 0.5px
+    .no-touchevents &:hover
+      color: $rev-body-color
+      background-color: $cyan-color
+
+  .site-nav__menu__sl
+    z-index: 1
+    display: none
+    +position(absolute, null 0 null 0)
+    +padding(1)
+
+  .site-nav__menu__sl__list
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+
+  .site-nav__menu__sl__item
+    border-left: 1px solid $blue-xl-color
+    &:first-child
+      border: none
+
+  .site-nav__menu__sl__link
+    +vertical-padding(0.5)
+    +horizontal-padding(1)
+    +margin-top(0.5)
+    +font-size(smallprint)
+    .no-touchevents &:hover
+      color: $yellow-color
+
++at-breakpoint(monitor)
+  .site-nav__menu__sl__link
+    +horizontal-padding(1.4)

@@ -67,7 +67,6 @@
 
 @function custom-breakpoint-media-queries($min-width, $max-width: false)
   $result: ""
-  $query: "screen"
   @if $max-width
     $max-width: $max-width - 1px
     @if $min-width > 0px
@@ -76,6 +75,7 @@
     $result: $query
   @else
     @if $min-width > 0px
+      $min-width: $width
       $query: "screen and (min-width: #{$min-width})"
       $result: $query
 

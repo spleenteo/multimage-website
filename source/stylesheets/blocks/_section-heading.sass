@@ -1,0 +1,64 @@
+.section-heading
+  +vertical-padding(3)
+
+.section-heading__columns
+
+.section-heading__title
+  +heading-font-family
+  color: $blue-color
+  text-transform: uppercase
+  text-align: center
+  +font-size(gamma)
+
+.section-heading__text
+  +margin-top(1)
+  +heading-font-family
+  text-align: center
+  max-width: 600px
+  margin: 0 auto
+
+.section-heading__action
+  +margin-top(2)
+  +font-size(smallprint)
+
+.section-heading--gray
+  background-color: $gray-l-color
+  @extend .section-heading
+
+.section-heading--blue
+  background-color: $blue-color
+  @extend .section-heading
+
+  .section-heading__title,
+  .section-heading__action
+    color: $rev-body-color
+
+.section-heading--small
+  @extend .section-heading
+  +vertical-padding(2)
+
+  .section-heading__title
+    +font-size(gamma)
+
++at-breakpoint(tab)
+  .section-heading__columns
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+  .section-heading__action
+    +margin-top(0)
+
++at-breakpoint(lap)
+  .section-heading
+    +vertical-padding(4)
+
+  .section-heading--small
+    +vertical-padding(2)
+
+  .section-heading__title
+    +font-size(beta)
+
+  .section-heading__text
+    +margin-top(2)
+    +font-size(epsilon)

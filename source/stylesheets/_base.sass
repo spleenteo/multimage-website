@@ -16,7 +16,6 @@ html
 
 body
   +body-font-family
-  +font-size(regular)
   color: $base-body-color
   line-height: 1.5
   min-height: 100%
@@ -27,15 +26,8 @@ body
   -moz-osx-font-smoothing: grayscale
 
 a
-  @if $enable-transitions
-    +base-transition("ease-in-out", "base")
-  color: $base-link-color
+  color: $base-body-color
   text-decoration: none
-  &::before
-    @if $enable-transitions
-      +base-transition("ease-in-out", "base")
-  @include hover-focus
-    text-decoration: underline
 
 ul, ol, blockquote
   +margin(0)
@@ -58,8 +50,8 @@ input[type=email], input[type=number], input[type=password], input[type=search],
 input[type=tel], input[type=text], input[type=url], input[type=color], input[type=date],
 input[type=datetime], input[type=datetime-local], input[type=month], input[type=time],
 input[type=week], textarea
-  -webkit-appearance: unset
-  appearance: unset
+  -webkit-appearance: none
+  appearance: none
   background-image: none
   box-sizing: border-box
   display: block
@@ -83,8 +75,8 @@ input[type=number]
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button
   +margin(0)
-  -webkit-appearance: unset
-  appearance: unset
+  -webkit-appearance: none
+  appearance: none
 
 button, input[type="submit"]
   background-image: none
@@ -111,6 +103,7 @@ pre, code
 
 hr
   border: none
+  border-color: $border-l-color
   border-bottom-style: solid
   border-bottom-width: 1px
 
@@ -125,4 +118,5 @@ img
   vertical-align: top
 
 legend
+  +heading-font-family
   color: $gray-color

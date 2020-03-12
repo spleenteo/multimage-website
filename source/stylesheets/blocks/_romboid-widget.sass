@@ -1,0 +1,49 @@
+.romboid-widget
+  &.is-red .romboid-widget__heading::after
+    background-color: $red-color
+
+  &.is-black .romboid-widget__heading::after
+    background-color: $black-color
+
+  &.is-blue .romboid-widget__heading::after
+    background-color: $cyan-color
+
+  &.is-green .romboid-widget__heading::after
+    background-color: $green-color
+
+.romboid-widget__heading
+  position: relative
+  border-bottom: 1px solid $base-body-color
+  display: flex
+  flex-wrap: wrap
+  align-items: baseline
+  +vertical-padding(1)
+  +margin-bottom(2)
+
+  &:after
+    content: " "
+    +position(absolute, null 0 0 null)
+    width: 20px
+    height: 20px
+    transform: rotate(45deg)
+    z-index: 1
+    margin-bottom: -10px
+
+.romboid-widget__title
+  +heading-font-family
+  +font-size(delta)
+  text-transform: uppercase
+
+.romboid-widget__subtitle
+  +heading-font-family
+  +margin-left(1)
+
+.romboid-widget__text
+  text-transform: uppercase
+  +font-size(smallprint)
+  strong
+    font-weight: normal
+    color: $cyan-color
+
+  p
+    +margin-bottom(0.5)
