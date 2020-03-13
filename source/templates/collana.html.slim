@@ -1,15 +1,68 @@
 - content_for(:head)
   == dato_meta_tags(col)
 
-/ = partial "partials/navbar"
-
 - books = dato.books.select{|b| b.archive != true && b.collection == col}
 
-= partial "partials/page_header",
-  locals: {title: "Collana: #{col.name}", subtitle: col.description } do
-   = link_to "vedi tutte le #{dato.collections.count} collane", "/collane/"
 
-section
-  = partial "/partials/books_table", locals: {books: books}
+section.margin--both-2.margin--both-4-on-lap
+  .wrap--small
+    .text-widget.align--center
+      .omega Collana editoriale con #{pluralize(t("book.book"), books.count)}
+      .text-widget__title
+        h1 = col.name
 
-= partial "partials/cta"
+      .grid
+        .grid__item.desk-10-12
+          .text-widget__content.text--gray
+            .formatted-content.align--center
+              = col.description
+
+section.margin--both-2.margin--both-4-on-lap
+  .wrap
+    .grid--center
+      - books.each do |book|
+        .grid__item.lap-3-12
+          .margin--bottom-4
+            = link_to "/libri/#{book.slug}",
+              title: book.title,
+              class: "text-widget--link"
+
+              .margin--bottom-2
+                = image_lazy book.cover_image,
+                  {w: 600, fit: 'crop'},
+                  [[600, 480],
+                  [600, 768],
+                  [600, 1280]],
+                  {alt: book.title,
+                  title: book.title,
+                  class: "lazyload"}
+
+              .margin--bottom-2
+                .uppercase.smallprint
+                  span.text--blue= book.collection.name
+                  = " / "
+                  span.text--gray= book.format
+
+              h3.gamma.margin--bottom-1.family--heading
+                = book.title
+                .small = book.subtitle
+              = strip_html(link_to_authors(book))
+
+              - if book.price.present?
+                .margin--both-1
+                  span.text-link = book_price(book)
+
+
+
+
+
+
+- if nil
+  = partial "partials/page_header",
+    locals: {title: "Collana: #{col.name}", subtitle: col.description } do
+    = link_to "vedi tutte le #{dato.collections.count} collane", "/collane/"
+
+  section
+    = partial "/partials/books_table", locals: {books: books}
+
+  = partial "partials/cta"

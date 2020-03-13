@@ -1,85 +1,150 @@
 - content_for(:head)
   == dato_meta_tags(book)
 
-/ = partial "partials/navbar"
-
-= partial "partials/page_header",
-  locals: {title: book.title, subtitle: link_to_authors(book) }
-
-  - if book.archive
-    div.label--danger: strong = t("ui.archived_book")
-  - elsif book.unavailable
-    hr
-    div.label--danger: strong = t("ui.unavailable_book")
-    hr
-
-css:
-  .showcase{
-    background-image: url("#{book.cover_image.file.fit('crop').crop('edges').blur(700).width(1200).height(400).format('pjpg').to_url}");
-    background-size: cover;
-  }
-
-.showcase.padding--both-2
+header.padding--both-3.padding--both-5-on-lap.background--gray-xl
   .wrap
+    .text-widget.align--center
+      .margin--bottom-3.text--cyan.uppercase
+        = link_to "Collana — #{book.collection.name}", "/collane/#{book.collection.slug}"
+
+      .text-widget__title
+        h1= book.title
+      p.text-widget__subtitle = book.subtitle if book.subtitle.present?
+
+      .margin--top-3.uppercase
+        - if book.archive
+          .label--danger: strong = t("ui.archived_book")
+        - elsif book.unavailable
+          .label--danger: strong = t("ui.unavailable_book")
+        - else
+          - if book.price.present?
+            = link_to "#{book_price(book)} – #{t("book.format")} #{book.format}", "#"
+
+          - if book.format == "Ebook" && book.epub_url.present?
+            div = link_to t("ui.buy"), book.epub_url, target: "_blank", class: "button"
+
+
+.wrap
+  css:
+    .showcase__cover{
+      background-image: url("#{book.cover_image.file.fit('crop').crop('edges').blur(700).width(1200).height(400).bri(45).format('pjpg').to_url}");
+      background-size: cover;
+    }
+  .showcase
+    .showcase__cover
+      figure
+        = image_tag book.cover_image.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
+
+    - if book.review.present?
+      .showcase__body
+        article.text-widget
+          h3.text-widget__small-title = t("book.back_cover")
+          .text-widget__content
+            .formatted-content
+              = book.review
+          
+
+section.margin--both-2.margin--both-4-on-lap
+  header.section-heading--gray
+    h2.section-heading__title
+      = "#{pluralize("Autore", book.authors.count)} del libro"
+
+
+  .wrap.grid--center
+    - book.authors.each do |author|
+      .grid__item.lap-6-12
+        = link_to "/autori/#{author.slug}" do
+          .text-widget
+            .flex
+              .flex__item.flex-6-12
+                .padding--both-2
+                  .margin--bottom-2
+                    figure.frame-banner
+                      = image_tag author.picture.url(w: 800,
+                        h: 650,
+                        format: 'pjpg',
+                        auto: 'compress',
+                        fit: 'crop'),
+                        alt: author.full_name,
+                        title: author.full_name,
+                        class: 'frame-banner__background'
+
+              .flex__item.flex-6-12
+                .margin--both-1
+                  h3.text-widget__title
+                    = author_name(author)
+
+                .margin--bottom-2
+                  h4.text-widget__small-title #{pluralize(t("book.book"), dato.books.select{|b| b.authors.include?(author)}.count)} con Multimage
+
+                  .text--gray
+                    .formatted-content
+                      = truncate_words(strip_html(author.biography), length: 30)
+
+section.margin--both-2.margin--both-4-on-lap
+  header.section-heading--gray
+    h2.section-heading__title Dettagli
+
+
+
+  section.wrap.margin--both-5
     .grid
       .grid__item.lap-6-12
-        figure
-          = image_tag book.cover_image.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
-
+        h4.gamma = t("book.edition_details")
+        ul.padding--both-2
+          = show_book_detail(t("book.isbn"), book.isbn)
+          = show_book_detail(t("book.print_year"), book.print_year)
+          = show_book_detail(t("book.first_print_year"), book.first_print_year)
+          - if book.edition > 1
+            = show_book_detail(t("book.edition"), "#{book_edition(book)} #{t("book.edition").downcase}")
+          - book.reprints.each do |reprint|
+            - if reprint.item_type.api_key == "reprint"
+              = show_book_detail(t("book.reprint"), "#{reprint.number}<sup>a</sup> #{t("book.reprint").downcase}")
+              = show_book_detail(t("book.reprint_circulation"), reprint.circulation)
+              = show_book_detail(t("book.reprint_year"), reprint.year.year)
+          = show_book_detail(t("book.original_lang"), book.original_lang)
+          = show_book_detail(t("book.original_title"), book.original_title)
+          = show_book_detail(t("book.translator"), book.translator)
+          = show_book_license(book)
 
       .grid__item.lap-6-12
-        .formatted-content #{book.subtitle}#{" – " if book.subtitle.present?}#{book.description}
-        p collana #{link_to book.collection.name, "/collane/#{book.collection.slug}"}
+        h4.gamma = t("book.edition_graphics_details")
+        ul.padding--both-2
+          = show_book_detail(t("book.pages"), book.pages)
+          = show_book_detail(t("book.illustrator"), book.illustrator)
+          = show_book_detail(t("book.cover_designer"), book.cover_designer)
+          = show_book_detail(t("book.layout_artist"), book.layout_artist)
 
-        - if !book.archive
-          ul
-            - if book.price.present?
-              li
-                = link_to "#{book_price(book)} – #{t("book.format")} #{book.format}", "#"
 
-            - if book.format == "Ebook" && book.epub_url.present?
-              li = link_to t("ui.buy"), book.epub_url, target: "_blank"
 
-- if book.review.present?
+
+
+
+- if nil
   section.wrap.margin--both-5
-    h4.beta = t("book.back_cover")
-    article.padding--both-2.formatted-content = book.review
+    .grid
+      .grid__item.lap-6-12
+        h4.gamma = t("book.edition_details")
+        ul.padding--both-2
+          = show_book_detail(t("book.isbn"), book.isbn)
+          = show_book_detail(t("book.print_year"), book.print_year)
+          = show_book_detail(t("book.first_print_year"), book.first_print_year)
+          - if book.edition > 1
+            = show_book_detail(t("book.edition"), "#{book_edition(book)} #{t("book.edition").downcase}")
+          - book.reprints.each do |reprint|
+            - if reprint.item_type.api_key == "reprint"
+              = show_book_detail(t("book.reprint"), "#{reprint.number}<sup>a</sup> #{t("book.reprint").downcase}")
+              = show_book_detail(t("book.reprint_circulation"), reprint.circulation)
+              = show_book_detail(t("book.reprint_year"), reprint.year.year)
+          = show_book_detail(t("book.original_lang"), book.original_lang)
+          = show_book_detail(t("book.original_title"), book.original_title)
+          = show_book_detail(t("book.translator"), book.translator)
+          = show_book_license(book)
 
-section.wrap.margin--both-5
-  h4.beta = pluralize(t("book.author"), book.authors.count)
-  - book.authors.each do |author|
-    div
-      figure
-        = image_tag author.picture.file.fit('crop').width(200).height(200).format('pjpg').to_url,class: "img-fluid radius_full" if author.picture.present?
-      h3 = author_name(author)
-      p = author.country
-      p = truncate_words(author.biography, length: 35)
-      = link_to t("book.author_page"), "/autori/#{author.slug}"
-
-section.wrap.margin--both-5
-  .grid
-    .grid__item.lap-6-12
-      h4.gamma = t("book.edition_details")
-      ul.padding--both-2
-        = show_book_detail(t("book.isbn"), book.isbn)
-        = show_book_detail(t("book.print_year"), book.print_year)
-        = show_book_detail(t("book.first_print_year"), book.first_print_year)
-        - if book.edition > 1
-          = show_book_detail(t("book.edition"), "#{book_edition(book)} #{t("book.edition").downcase}")
-        - book.reprints.each do |reprint|
-          - if reprint.item_type.api_key == "reprint"
-            = show_book_detail(t("book.reprint"), "#{reprint.number}<sup>a</sup> #{t("book.reprint").downcase}")
-            = show_book_detail(t("book.reprint_circulation"), reprint.circulation)
-            = show_book_detail(t("book.reprint_year"), reprint.year.year)
-        = show_book_detail(t("book.original_lang"), book.original_lang)
-        = show_book_detail(t("book.original_title"), book.original_title)
-        = show_book_detail(t("book.translator"), book.translator)
-        = show_book_license(book)
-
-    .grid__item.lap-6-12
-      h4.gamma = t("book.edition_graphics_details")
-      ul.padding--both-2
-        = show_book_detail(t("book.pages"), book.pages)
-        = show_book_detail(t("book.illustrator"), book.illustrator)
-        = show_book_detail(t("book.cover_designer"), book.cover_designer)
-        = show_book_detail(t("book.layout_artist"), book.layout_artist)
+      .grid__item.lap-6-12
+        h4.gamma = t("book.edition_graphics_details")
+        ul.padding--both-2
+          = show_book_detail(t("book.pages"), book.pages)
+          = show_book_detail(t("book.illustrator"), book.illustrator)
+          = show_book_detail(t("book.cover_designer"), book.cover_designer)
+          = show_book_detail(t("book.layout_artist"), book.layout_artist)
