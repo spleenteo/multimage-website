@@ -13,11 +13,11 @@ nav class=block_class
 
             ruby:
               sl_books = [
-                { :label => t('nav.books'), :url => locale_path("/libri/") },
+                { :label => t('nav.collections'), :url => locale_path("/collane") },             
                 { :label => t('nav.highlights'), :url => locale_path("/libri/highlights") },
+                { :label => t('nav.books'), :url => locale_path("/libri/") },
                 { :label => t('nav.ebooks'), :url => locale_path("/libri/ebooks") },
                 { :label => t('nav.archive'), :url => locale_path("/libri/archivio") },
-                { :label => t('nav.collections'), :url => locale_path("/collane") }                
               ]
 
             - sl_books.each do |item|

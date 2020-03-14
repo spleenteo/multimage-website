@@ -23,34 +23,7 @@ section.margin--both-2.margin--both-4-on-lap
       - books.each do |book|
         .grid__item.lap-3-12
           .margin--bottom-4
-            = link_to "/libri/#{book.slug}",
-              title: book.title,
-              class: "text-widget--link"
-
-              .margin--bottom-2
-                = image_lazy book.cover_image,
-                  {w: 600, fit: 'crop'},
-                  [[600, 480],
-                  [600, 768],
-                  [600, 1280]],
-                  {alt: book.title,
-                  title: book.title,
-                  class: "lazyload"}
-
-              .margin--bottom-2
-                .uppercase.smallprint
-                  span.text--blue= book.collection.name
-                  = " / "
-                  span.text--gray= book.format
-
-              h3.gamma.margin--bottom-1.family--heading
-                = book.title
-                .small = book.subtitle
-              = strip_html(link_to_authors(book))
-
-              - if book.price.present?
-                .margin--both-1
-                  span.text-link = book_price(book)
+            = partial "partials/book", locals: {book: book}
 
 
 

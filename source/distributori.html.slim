@@ -2,9 +2,74 @@
   == dato_meta_tags(dato.suppliers_index)
 
 - collections = dato.suppliers.sort_by(&:region)
-/ = partial "partials/navbar"
 
-= partial "partials/page_header", locals: {title: dato.suppliers_index.title, subtitle: dato.suppliers_index.subtitle }
+section.margin--both-2.margin--both-4-on-lap
+  .wrap--small
+    .text-widget.align--center
+      .omega #{pluralize("Distributore", dato.suppliers.count)}
+      .text-widget__title
+        h1 = dato.suppliers_index.title
+
+      .grid
+        .grid__item.desk-10-12
+          .text-widget__content.text--gray
+            .formatted-content.align--center
+              = dato.suppliers_index.subtitle
+
+.wrap
+  section.margin--bottom-5
+    .grid--wide.grid--center
+      - collections.each do |dist|
+        .grid__item.desk-8-12
+          hr
+          .padding--both-2
+            .grid--center
+              .grid__item.lap-10-12
+                .text-widget
+                  .margin--both-3
+                    .text-widget__subtitle #{dist.region}, #{dist.city}
+                    h3.text-widget__title.uppercase
+                      = dist.name
+
+                  - if dist.address.present?
+                    .margin--both-1
+                      .inline-nav
+                        .inline-nav__item
+                          .epsilon= icon("pin")
+
+                        .inline-nav__item
+                          .formatted-content.uppercase.smallprint
+                            p = dist.address
+                            - if dist.map.present?
+                              p = link_to t("distributor.how_to_arrive"), "http://maps.google.com/maps?z=12&t=m&q=loc:#{dist.map.latitude}+#{dist.map.longitude}", target: "_blank"
+
+                  - if dist.url.present?
+                    .margin--both-1
+                      .inline-nav
+                        .inline-nav__item
+                          .epsilon= icon("link")
+
+                        .inline-nav__item
+                          .uppercase.smallprint
+                            #{dist.telephone} #{mail_to dist.email} - #{link_to t("distributor.website"), dist.url, target: "_blank" if dist.url.present?}
+  
+
+              .grid__item.lap-2-12
+                .align--center
+                  - if dist.logo.present?
+                    = image_lazy dist.logo,
+                      {w: 400, fit: 'crop'},
+                      [[400, 380],
+                      [600, 600]],
+                      {alt: dist.name,
+                      title: dist.name,
+                      class: "lazyload __image"}
+
+
+
+
+
+
 
 section.wrap
   .label  #{pluralize("Distributore", collections.count)}

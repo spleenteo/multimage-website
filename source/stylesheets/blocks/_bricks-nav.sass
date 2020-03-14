@@ -10,6 +10,10 @@
   +horizontal-padding(3)
   text-transform: uppercase
 
+  &.is-active
+    background-color: $cyan-color
+    color: $rev-body-color
+
   .no-touchevents &:hover
     background-color: $cyan-color
     color: $rev-body-color
@@ -27,3 +31,9 @@
 
     &:last-child
       border-right: 1px solid $gray-alt-color
+
+.bricks-nav--narrow
+  @extend .bricks-nav
+  .bricks-nav__link
+    padding-right: 4px
+    padding-left: 4px

@@ -4,33 +4,49 @@
 / = partial "partials/navbar"
 
 - books = dato.books.select{|b| b.authors.include?(author)}
-- subtitle = "#{t("author.from_country", country: author.country)}, ha pubblicato #{pluralize("libro", books.count)} con Multimage"
 
-= partial "partials/page_header",
-  locals: {title: author_name(author), subtitle: subtitle }
-
-- if author.picture.present?
-  css:
-    .showcase{
-      background-image: url("#{author.picture.file.fit('crop').crop('edges').blur(700).width(1200).height(400).format('pjpg').to_url }");
-      background-size: cover;
-    }
-
-.showcase.padding--both-2
+header.padding--both-3.padding--both-5-on-lap.background--gray-xl
   .wrap
-    .grid
-      .grid__item.lap-6-12
-        - if author.picture.present?
-          = image_tag author.picture.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
-      .grid__item.lap-6-12
-        section
-          h4 = t("author.biography")
-          article.formatted-content  = author.biography
+    .text-widget.align--center
+      .text-widget__title
+        h1= author_name(author)
+      p.text-widget__subtitle Ha pubblicato #{pluralize("libro", books.count)} con Multimage
 
-section.wrap.margin--both-5
-    h4 #{pluralize(t("book.book"), books.count)} #{t("author.by")}
-    ul
-      - books.sort_by(&:title).each do |book|
-        li #{link_to book.title, "/libri/#{book.slug}"} #{t("author.curator") if book.edited_by.present?}
+
+.wrap
+  - if author.picture.present?
+    css:
+      .showcase__cover{
+        background-image: url("#{author.picture.file.fit('crop').crop('edges').blur(700).width(600).height(400).format('pjpg').to_url }");
+        background-size: cover;
+      }
+  .showcase
+    .showcase__cover
+      - if author.picture.present?
+        figure
+        = image_tag author.picture.file.fit('crop').crop('edges').width(400).format('pjpg').to_url, class: "img-fluid radius10_ img"
+
+    - if author.biography.present?
+      .showcase__body
+        article.text-widget
+          h3.text-widget__small-title = t("author.from_country", country: author.country)
+          .text-widget__content
+            .formatted-content
+              = author.biography
+
+
+section.margin--both-2.margin--both-4-on-lap
+  header.section-heading--gray
+    h2.section-heading__title
+      = "#{pluralize("Libro", books.count)} dell'autore"
+
+section.margin--both-2.margin--both-4-on-lap
+  .wrap
+    .grid--center
+      - books.each do |book|
+        .grid__item.lap-3-12
+          .margin--bottom-4
+            = partial "partials/book", locals: {book: book}
+
 
 = partial "partials/cta"
