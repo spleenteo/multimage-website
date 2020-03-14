@@ -1,7 +1,7 @@
 - content_for(:head)
   == dato_meta_tags(dato.authors_index)
 
-- authors = dato.authors.sort_by(&:sort_by)
+- authors = dato.authors
 /= partial "partials/navbar"
 
 
@@ -18,17 +18,27 @@ section.margin--both-2.margin--both-4-on-lap
             .formatted-content.align--center
               = dato.authors_index.subtitle
 
-.margin--bottom-3
-  nav.bricks-nav--narrow
-    - %w(a b c d e f g h i j k l m n o p q r s t u v w x y z).each do |char|
-      = link_to char, "##{char}", class: "bricks-nav__link"
+- groups = authors.sort_by{ |a| [a.sort_by, a.alias, a.full_name] }.group_by { |a| a.sort_by[0].to_s.downcase }
 
+.visible--on-lap
+  .margin--bottom-3
+    a name="char-menu"
+    nav.bricks-nav--narrow
+      - groups.each do |key, value|
+        = link_to key, "#group-#{key}", class: "bricks-nav__link"
 
 .wrap.grid--center
-  - authors.sort_by{ |a| [a.sort_by, a.alias, a.full_name] }.each do |author|
-    - pubs = dato.books.select{|b| b.authors.include?(author)}.count
-    - if pubs > 0
-      .grid__item.lap-4-12
-        = partial "partials/author", locals: {author: author}
+  - groups.each do |key, authors|
+    - if !key.blank?
+      a name="group-#{key}"
+      header.section-heading--blue.section-heading--small.margin--both-3
+        .section-heading__title = key
+        a.section-heading__action.milli href="#char-menu" back
+
+    - authors.each do |author|
+      - pubs = dato.books.select{|b| b.authors.include?(author)}.count
+      - if pubs > 0
+        .grid__item.lap-4-12
+          = partial "partials/author", locals: {author: author}
 
 = partial "partials/cta"

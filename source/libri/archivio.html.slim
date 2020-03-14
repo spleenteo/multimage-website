@@ -17,7 +17,12 @@ section.margin--both-2.margin--both-4-on-lap
             .formatted-content.align--center
               = dato.archive_index.subtitle
 
-section.wrap
-  = partial "/partials/books_table", locals: {books: archived_books}
+section.margin--both-2.margin--both-4-on-lap
+  .wrap
+    .grid--center
+      - archived_books.each do |book|
+        .grid__item.lap-2-12
+          .margin--bottom-4
+            = partial "partials/book", locals: {book: book}
 
 = partial "partials/cta"

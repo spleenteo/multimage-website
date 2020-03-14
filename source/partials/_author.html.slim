@@ -1,9 +1,8 @@
-= link_to "/autori/#{author.slug}", class: "box", name: author.sort_by[0].to_s.downcase do
-  .text-widget
+= link_to "/autori/#{author.slug}", class: "box" do
     .flex
-      .flex__item.flex-6-12
-        .padding--both-2
-          .margin--bottom-2
+      .flex__item.flex-lap-6-12
+        .box__image
+          .padding--both-2
             figure.frame-banner
               - if author.picture.present?
                 = image_tag author.picture.url(w: 400,
@@ -17,13 +16,12 @@
               - else
                 = image_tag "isologo.png"
 
-      .flex__item.flex-6-12
-        .margin--both-1
+      .flex__item.flex-lap-6-12
+        .box__body
           .text--gray.milli = author.sort_by
           h3.text-widget__small-title
             = author_name(author)
 
-        .margin--bottom-2
           .text--gray
             .margin--bottom-1 = author.country
             div #{pluralize(t("book.book"), dato.books.select{|b| b.authors.include?(author)}.count)} con Multimage
