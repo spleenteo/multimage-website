@@ -1,6 +1,17 @@
 // Transition and animation
 // sass-lint:disable indentation
-@mixin base-transition($easing, $propriety: 'base')
+@mixin transition($custom-transition...)
+  @if $enable-transitions
+    @if length($custom-transition) == 0
+      +transition-type('material')
+    @else
+      transition: $custom-transition
+
+  @if $enable-prefers-reduced-motion-media-query
+    @media (prefers-reduced-motion: reduce)
+      transition: none
+
+@mixin transition-type($easing, $propriety: 'base')
   @if type-of($easing) == "string"
     @if map-has-key($transition-functions, $easing)
       @if $propriety == 'base'

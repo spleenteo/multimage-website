@@ -86,4 +86,10 @@ TODO: logica da progettare quando ci sarà l'ecommerce
     "#{count} #{word}"
   end
 
+  def strip_html(content)
+    re = /<("[^"]*"|'[^']*'|[^'">])*>/
+    content.gsub(re, '')
+  end
+
+
 end

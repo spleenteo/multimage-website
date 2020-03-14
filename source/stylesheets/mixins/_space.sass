@@ -1,12 +1,5 @@
-@mixin space-rule($rule, $unit)
-  @if type-of($unit) == number and unit($unit) == "px"
-    +rem-rule($rule, $unit)
-  @else if unitless($unit)
-    +rem-rule($rule, $unit * $space-unit)
-  @else if type-of($unit) == "number"
-    #{$rule}: $unit
-  @else
-    @warn "value ‘#{$unit}’ invalid"
+@mixin space-rule($rule, $value)
+  +rem-rule($rule, removeUnit($value) * $space-unit)
 
 @mixin margin-left($value)
   +space-rule(margin-left, $value)
@@ -68,3 +61,4 @@
 
 @mixin bottom($value)
   +space-rule(bottom, $value)
+

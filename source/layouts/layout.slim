@@ -3,12 +3,13 @@ html lang=I18n.locale
   head = partial "partials/head"
   body
     .canvas
-      aside.canvas__aside--left
-        = partial "partials/aside-nav-left"
-      main.canvas__main
+      .canvas__main
         = partial "partials/site-nav"
-        = yield
+      
+        main.canvas__main
+          = yield
+
         = partial "partials/site-footer"
 
-    .svg-sprite-inliner= partial "images/sprite.svg"
     = partial "partials/js_includes"
+    .svg-sprite-inliner= partial "images/sprite.svg"

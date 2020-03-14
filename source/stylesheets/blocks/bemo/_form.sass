@@ -1,0 +1,80 @@
+.form
+  position: relative
+  background: $gray-xl-color
+  &.show-success-message
+    .form__overlay
+      display: block
+
+.form__overlay
+  display: none
+  +position(absolute, 0 0 0 0)
+  background: $gray-xl-color
+  z-index: 1
+
+.form__overlay__text
+  +center
+  width: 80%
+  text-align: center
+  color: $blue-color
+  +font-size(epsilon)
+
+.form__field
+  +margin-bottom(2)
+
+.form__subtitle
+  +font-size(epsilon)
+  font-weight: bold
+
+.form__split
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+
+.form__label
+  +margin-bottom(1)
+  display: block
+  text-transform: uppercase
+  +font-size(smallprint)
+  letter-spacing: 1.5px
+
+.form__input
+  +font-size(smallprint)
+  +padding(1)
+  @include transition(border 0.2s cubic-bezier(.55,0,.1,1))
+  border: 1px solid $gray-alt-color
+  border-radius: 0.1rem
+  width: 100%
+
+.form__actions
+  +margin-top(2)
+
+.form__field--invalid
+  #{$all-text-inputs}, textarea
+    border: 1px solid $red-color
+
+.form__error
+  +font-size(milli)
+  +margin-top(1)
+  color: $red-color
+
+.form__hint
+  +font-size(milli)
+  +margin-top(1)
+  color: $base-body-color
+
+.form__block
+  +margin-bottom(3)
+  +padding-bottom(3)
+
+.form__field--with-prefix
+  position: relative
+
+  .form__field__prefix
+    +center-vertically
+    left: 0px
+    text-align: right
+    width: 2em
+    z-index: 2
+
+  .form__field__input *
+    padding-left: 2.5em

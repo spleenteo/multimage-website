@@ -33,7 +33,7 @@
 
     &:before
       opacity: $slick-opacity-on-hover
-      border-color: #CCCCCC
+      border-color: $base-body-color
 
   &.slick-disabled:before
     opacity: $slick-opacity-not-active
@@ -48,16 +48,16 @@
   left: -30px
 
   &:before
-    border-bottom: 1px solid #000000
-    border-left: 1px solid #000000
+    border-bottom: 1px solid $border-color
+    border-left: 1px solid $border-color
     transform: rotate(45deg)
 
 .slick-next
   right: -30px
 
   &:before
-    border-top: 1px solid #000000
-    border-right: 1px solid #000000
+    border-top: 1px solid $border-color
+    border-right: 1px solid $border-color
     transform: rotate(45deg)
 
 /* Dots
@@ -140,9 +140,16 @@
   +vertical-padding(0.5)
   .slick-slider__item
     +padding(0.5)
+    +transition-type("material", "base")
     cursor: pointer
     img
       border-radius: 5px
 
     .no-touchevents &:hover
       opacity: .8
+
+.slick-slider--sponsors
+  .slick-slider__item
+    +padding(1)
+    img
+      max-height: 180px

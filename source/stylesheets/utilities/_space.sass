@@ -28,6 +28,12 @@
         +space-rule("padding-top", $amount)
         +space-rule("padding-bottom", $amount)
 
+      .margin--all-#{$amount}-on-#{$name}
+        +space-rule("margin", $amount)
+
+      .padding--all-#{$amount}-on-#{$name}
+        +space-rule("padding", $amount)
+
     @each $direction in $space-directions
       @each $amount in $space-amounts
         .margin--#{$direction}-#{$amount}-on-#{$name}
@@ -36,17 +42,14 @@
           +space-rule("padding-#{$direction}", $amount)
 
 @each $space, $size in $space-sizes
-  .space--#{$space}-w
+  .space-#{$space}
     width: $size
-
-  .space--#{$space}-h
-    height: $size
 
 @each $name in $space-breakpoints
   +at-breakpoint($name)
     @each $space, $size in $space-sizes
-      .space--#{$space}-w-on-#{$name}
+      .space-#{$space}-on-#{$name}
         width: $size
 
-      .space--#{$space}-h-on-#{$name}
-        height: $size
+.margin--bottom-0-5
+  +margin-bottom(0.5)

@@ -1,16 +1,19 @@
-// Bemo variables for Button block
+// Base Buttons
 //
-
-// enable variables
-$enable-button-rounded:              true !default
+// For each of Bootstrap's buttons, define text, background, and border color.
+$enable-button-rounded:              false !default
 $enable-button-colored:              true !default
-$enable-button-size:                 true !default
+$enable-button-size:                 false !default
 
-$button-padding-vertical:            0.75rem !default
-$button-padding-horizontal:          0.75rem !default
+$button-font-size:                   14px !default
+$button-padding-vertical:            .75rem !default
+$button-padding-horizontal:          .75rem !default
 $button-border-width:                1px !default
-$button-focus-width:                 0.2rem !default
-$button-disabled-opacity:            0.65 !default
-$button-border-radius:               12px !default
-$button-margin-left:                 12px !default
-$button-transition:                  color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default
+
+$button-focus-width:                 .2rem !default
+$button-disabled-opacity:            .65 !default
+
+// Allows for customizing button radius independently from global border radius
+$button-border-radius:               8px !default
+$button-margin-left:                 12px
+$button-transition:                  color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default

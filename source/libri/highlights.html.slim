@@ -3,12 +3,27 @@
 
 - available_books = dato.books.select{|b| b.archive != true  && b.highlight == true}.sort_by(&:print_year).reverse
 
-/ = partial "partials/navbar"
+= partial "/libri/books_sub_nav"
 
-= partial "partials/page_header",
-  locals: {title: dato.highlights_index.title, subtitle: dato.highlights_index.subtitle }
+section.margin--both-2.margin--both-4-on-lap
+  .wrap--small
+    .text-widget.align--center
+      .omega #{pluralize(t("book.book"), available_books.count)}
+      .text-widget__title
+        h1 = dato.highlights_index.title
 
-section.wrap
-  = partial "partials/books_table", locals: {books: available_books}
+      .grid
+        .grid__item.desk-10-12
+          .text-widget__content.text--gray
+            .formatted-content.align--center
+              = dato.highlights_index.subtitle
+
+section.margin--both-2.margin--both-4-on-lap
+  .wrap
+    .grid--center
+      - available_books.each do |book|
+        .grid__item.lap-3-12
+          .margin--bottom-4
+            = partial "partials/book", locals: {book: book}
 
 = partial "partials/cta"

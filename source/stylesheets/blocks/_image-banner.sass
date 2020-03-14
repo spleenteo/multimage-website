@@ -1,0 +1,69 @@
+.image-banner
+  position: relative
+  height: 400px
+  z-index: 0
+  &:after
+    content: ""
+    +position(absolute, 0 0 0 0)
+    background-color: rgba($black-color, 0.3)
+
+.image-banner__video 
+  height: 100%
+  width: 100%
+  object-fit: cover
+
+
+.image-banner__background
+  object-fit: cover
+  width: 100%
+  max-width: none
+  height: inherit
+  position: relative
+
+.image-banner__content
+  +center
+  +padding(2)
+  z-index: 1
+  width: 90%
+
+  +at-breakpoint(lap)
+    width: auto
+
+.image-banner__pre-title
+  +heading-font-family
+  color: $rev-body-color
+  +margin-bottom(1)
+  +font-size(gamma)
+  text-align: center
+
+.image-banner__title
+  color: $rev-body-color
+  +heading-font-family
+  +font-size(beta)
+  text-align: center
+
+  &:after
+    content: ""
+    display: block
+    background: $rev-body-color
+    height: 3px
+    width: 50px
+    margin: 0 auto
+    +margin-top(3)
+
++at-breakpoint(lap)
+  .image-banner
+    height: 500px
+
+  .image-banner__title
+    +font-size(alpha)
+
+.image-banner--short
+  height: 400px
+
++at-breakpoint(monitor)
+  .image-banner
+    height: 600px
+
+  .image-banner--short
+    height: 400px

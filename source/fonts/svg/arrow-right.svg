@@ -1,1 +1,9 @@
-<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" class="svg-inline--fa fa-angle-right fa-w-8" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54 (76480) - https://sketchapp.com -->
+    <title>arrow-rigth</title>
+    <desc>Created with Sketch.</desc>
+    <g id="arrow-rigth" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M141,382.837893 C141,373.752429 141,376.17522 141,350.73592 C141,346.496037 143.414698,342.256153 147.036745,340.439061 L290.107612,256.247093 L147.036745,169.026637 C143.414698,167.209544 141,162.969661 141,158.12408 C141,132.68478 141,135.713268 141,126.022107 C141,116.330945 150.055118,111.485364 157.902887,116.330945 L364.963255,244.738838 C367.981627,246.555931 371,251.401512 371,255.035698 L371,258.064186 C371,261.698371 367.981627,266.543952 364.963255,268.361045 L157.902887,392.529055 C150.055118,397.374636 141,392.529055 141,382.837893 Z" id="&gt;" fill="#005192" fill-rule="nonzero"></path>
+    </g>
+</svg>

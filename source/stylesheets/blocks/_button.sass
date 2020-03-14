@@ -1,42 +1,20 @@
-// Bemo Button component
-//
-// @example usage:
-//  .button, .button--black, .button--small
-
 .button
   +button
-  @include button-size($button-padding-vertical, $button-padding-horizontal, $base-font-size)
+  @include button-size($button-padding-vertical, $button-padding-horizontal, $button-font-size, $button-border-radius)
+  @include transition($button-transition)
   border: $button-border-width solid transparent
-  @if $enable-button-rounded
-    border-radius: $button-border-radius
-  @if $enable-transitions
-    +base-transition('bounce', 'base')
-
-  // Block button
-  &--expand
-    display: block
-    width: 100%
 
 //
 // Button Sizes
+//
 @if $enable-button-size
   .button--small
     @extend .button
-    @include button-size(6px, 10px, "smallprint")
-
-  @if $enable-button-colored
-    @each $color, $value in $all-colors
-      .button--small-#{$color}
-        @extend .button--small
-        @include button-variant($value, $value)
-
-    @each $color, $value in $all-colors
-      .button--small-#{$color}-outline
-        @extend .button--small
-        @include button-outline-variant($value)
+    @include button-size(8px, 12px, "delta", 4px)
 
 //
 // Alternate buttons
+//
 @if $enable-button-colored
   @each $color, $value in $all-colors
     .button--#{$color}
@@ -44,9 +22,21 @@
       @include button-variant($value, $value)
 
   @each $color, $value in $all-colors
-    .button--#{$color}-outline
+    .button--outline-#{$color}
       @extend .button
       @include button-outline-variant($value)
+
+//
+// Block button
+//
+.button--expand
+  @extend .button
+  display: block
+  width: 100%
+
+  // Vertically space out multiple block buttons
+  + .button--expand
+    +margin-top(1)
 
 // Specificity overrides
 input[type="submit"],

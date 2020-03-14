@@ -1,0 +1,12 @@
+.colored-shadow
+  position: relative
+  +padding-bottom(3)
+
+  &:after
+    content: " "
+    +position(absolute, 0 140px 0 0)
+
+.colored-shadow__content
+
+.colored-shadow--gray::after
+  background-color: $gray-color

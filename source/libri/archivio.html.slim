@@ -2,12 +2,27 @@
   == dato_meta_tags(dato.archive_index)
 
 - archived_books = dato.books.select{|b| b.archive == true}.sort_by(&:print_year).reverse
-/ = partial "partials/navbar"
+= partial "/libri/books_sub_nav"
 
-= partial "partials/page_header",
-  locals: {title: dato.archive_index.title, subtitle: dato.archive_index.subtitle }
+section.margin--both-2.margin--both-4-on-lap
+  .wrap--small
+    .text-widget.align--center
+      .omega #{pluralize(t("book.book"), archived_books.count)}
+      .text-widget__title
+        h1 = dato.archive_index.title
 
-section.wrap
-  = partial "/partials/books_table", locals: {books: archived_books}
+      .grid
+        .grid__item.desk-10-12
+          .text-widget__content.text--gray
+            .formatted-content.align--center
+              = dato.archive_index.subtitle
+
+section.margin--both-2.margin--both-4-on-lap
+  .wrap
+    .grid--center
+      - archived_books.each do |book|
+        .grid__item.lap-2-12
+          .margin--bottom-4
+            = partial "partials/book", locals: {book: book}
 
 = partial "partials/cta"

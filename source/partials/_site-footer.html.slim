@@ -1,25 +1,33 @@
-footer.site-footer: .site-footer__inner
-  .wrap
-    ul.socials
-      li: a href=I18n.t('socials.twitter') target="_blank" twitter
-      li: a href=I18n.t('socials.facebook') target="_blank" facebook
+footer.site-footer
+  .site-footer__top
+    .wrap
+      .grid
+        .grid__item.desk-2-12
+          .margin--bottom-2
+            ul.socials
+              li: a href=I18n.t('socials.twitter') target="_blank" twitter
+              li: a href=I18n.t('socials.facebook') target="_blank" facebook
 
-    p.site-footer__copy
-      = ["©#{Time.now.year}",
-          (link_to "Privacy Policy",
-            "//www.iubenda.com/privacy-policy/#{I18n.t('iubenda_id')}",
-            class: "iubenda-nostyle no-brand iubenda-embed",
-            target: "_blank",
-            rel: "noreferrer"),
-          (link_to "Cookie Policy",
-            "//www.iubenda.com/privacy-policy/#{I18n.t('iubenda_id')}/cookie-policy",
-            class: "iubenda-nostyle no-brand iubenda-embed",
-            target: "_blank", rel: "noreferrer"),
-          (link_to t('credits.button_label'),
-            t('credits.url'),
-            title: t('credits.title'),
-            target: "_blank",
-            rel: "noreferrer"),
-          (link_to "Made with DatoCMS",
-            "https://datocms.com",
-            target: "_blank", rel: "noreferrer")].join(" - ")
+
+
+  .site-footer__bottom
+    .wrap
+      p.site-footer__copy
+        = ["©#{Time.now.year}",
+            (link_to "Privacy Policy",
+              "//www.iubenda.com/privacy-policy/#{I18n.t('iubenda_id')}",
+              class: "iubenda-nostyle no-brand iubenda-embed",
+              target: "_blank",
+              rel: "noreferrer"),
+            (link_to "Cookie Policy",
+              "//www.iubenda.com/privacy-policy/#{I18n.t('iubenda_id')}/cookie-policy",
+              class: "iubenda-nostyle no-brand iubenda-embed",
+              target: "_blank", rel: "noreferrer"),
+            (link_to t('credits.button_label'),
+              t('credits.url'),
+              title: t('credits.title'),
+              target: "_blank",
+              rel: "noreferrer"),
+            (link_to "Made with DatoCMS",
+              "https://datocms.com",
+              target: "_blank", rel: "noreferrer")].join(" - ")

@@ -1,19 +1,34 @@
 - content_for(:head)
   == dato_meta_tags(page)
 
-/ = partial "partials/navbar"
 
-= partial "partials/page_header",
-  locals: {title: page.title, subtitle: page.subtitle }
+.image-banner
+  - if page.featured_image.present?
+    = image_tag page.featured_image.url(w: 1920,
+      h: 900,
+      format: 'pjpg',
+      auto: 'compress'),
+      alt: page.featured_image.alt,
+      title: page.featured_image.title,
+      class: 'image-banner__background'
 
-.wrap.margin--bottom-5
-  article.formatted-content
+  .image-banner__content
+    h1.image-banner__title
+      = page.title
 
-    - if page.featured_image.present?
-      figure
-        img alt="" src=page.featured_image.file.fit('crop').width(400).format('pjpg').to_url
+section
+  - if page.subtitle.present?
+    header.section-heading--gray
+      .wrap--small
+        h2.section-heading__title
+          = page.subtitle
 
-    = page.body
+section.margin--bottom-4
+    .wrap--small
+      .margin--both-3
+        .formatted-content
+          = page.body
+
 
 - if page.layout == "paypal"
   = partial "partials/cta"

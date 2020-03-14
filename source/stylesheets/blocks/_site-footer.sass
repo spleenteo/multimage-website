@@ -1,16 +1,82 @@
 .site-footer
-  background: $base-body-color
+
+.site-footer__top
+  background-color: $blue-l-color
   +vertical-padding(2)
-  position: relative
 
-.site-footer__inner
-  display: flex
-  align-content: center
-  justify-content: space-between
-  align-items: center
-
-.site-footer__copy
+.site-footer__bottom
+  border-top: 3px solid $white-color
+  background-color: $blue-color
+  color: $rev-body-color
+  +vertical-padding(2)
+  text-transform: uppercase
+  text-align: center
   +font-size(milli)
-  color: #FFFFFF
+  line-height: 1.7
+  text-align: center
+
   a
-    color: #FFFFFF
+    color: $rev-body-color
+    font-weight: bold
+
+.site-footer__logo
+  display: block
+  margin: 0 auto
+  text-align: center
+  svg
+    max-width: 120px
+
+.site-footer__menu
+  margin: 0 auto
+  width: 260px
+
+.site-footer__menu__fl
+.site-footer__menu__fl__item
+  +margin-bottom(1)
+  text-align: center
+
+.site-footer__menu__fl__link
+  display: block
+  color: $rev-body-color
+  text-transform: uppercase
+  color: $yellow-color
+  +margin-bottom(1)
+
+.site-footer__menu__sl
+
+.site-footer__menu__sl__list
+  +margin-bottom(3)
+
+.site-footer__menu__sl__item
+  +margin-bottom(1)
+
+.site-footer__menu__sl__link
+  color: $rev-body-color
+
+
++at-breakpoint(lap)
+  .site-footer__top
+    +padding-top(4)
+
+  .site-footer__bottom
+    +vertical-padding(3)
+
+  .site-footer__logo
+    text-align: left
+
+  .site-footer__menu
+    width: 100%
+    margin: 0
+
+  .site-footer__menu__fl
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+
+  .site-footer__menu__fl__item
+    flex-basis: 50%
+    text-align: left
+
++at-breakpoint(desk)
+  .site-footer__menu__fl__item
+    flex-basis: auto

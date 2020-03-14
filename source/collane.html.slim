@@ -1,26 +1,57 @@
 - content_for(:head)
   == dato_meta_tags(dato.collections_index)
 
+- page = dato.collections_index
 - collections = dato.collections
-/ = partial "partials/navbar"
+= partial "/libri/books_sub_nav"
 
-= partial "partials/page_header", locals: {title: dato.collections_index.title, subtitle: dato.collections_index.subtitle }
+.image-banner
+  = image_tag page.cover.url(w: 1920,
+    h: 900,
+    format: 'pjpg',
+    auto: 'compress'),
+    alt: page.cover.alt,
+    title: page.cover.title,
+    class: 'image-banner__background'
 
-section.wrap
+  .image-banner__content
+    h1.image-banner__title
+      = page.title
 
-  .label  #{pluralize(t("collection.collection"), collections.count)}
-  table.table
-    thead
-      th = t("collection.name")
-      th = t("collection.description")
-      th
-    tbody
-      - collections.each do |col|
-        - pubs = dato.books.select{|b| b.collection == col}.count
-        - if pubs > 0
-          tr
-            td: strong = link_to col.name, "/collane/#{col.slug}"
-            td = col.description
-            td #{pluralize(t("book.book"), pubs)}
+section
+  - if page.subtitle.present?
+    header.section-heading--gray
+      .wrap--small
+        h2.section-heading__title
+          = page.subtitle
 
-= partial "partials/cta"
+
+  .wrap--small.margin--both-2
+    .grid--wide.grid--center
+      - collections.each do |coll|
+        .grid__item.lap-6-12.desk-3-12
+          .margin--both-3
+            article
+              / figure.frame-banner
+              /   = image_tag team_member.image.url(w: 500,
+              /     h: 450,
+              /     format: 'pjpg',
+              /     auto: 'compress',
+              /     fit: 'crop'),
+              /     alt: team_member.name,
+              /     title: team_member.name,
+              /     class: 'frame-banner__background'
+
+              .margin--both-2
+                .align--center
+                  = link_to "/collane/#{coll.slug}" do
+                    h2.family--heading.margin--bottom-1.gamma
+                      = coll.name
+                    .smallprint.text--blue.margin--bottom-1
+                      - pubs = dato.books.select{|b| b.collection == coll}.count
+                      = pluralize(t("book.book"), pubs)
+
+                    .smallprint.text--blue
+                      = truncate_words(coll.description, length: 15)
+
+  / = partial "partials/cta"

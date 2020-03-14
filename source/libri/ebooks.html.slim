@@ -2,12 +2,28 @@
   == dato_meta_tags(dato.ebooks_index)
 
 - available_ebooks = dato.books.select{|b| b.archive != true && b.format == "Ebook"}.sort_by(&:print_year).reverse
-/ = partial "partials/navbar"
+= partial "/libri/books_sub_nav"
 
-= partial "partials/page_header",
-  locals: {title: dato.ebooks_index.title, subtitle: dato.ebooks_index.subtitle }
 
-section.wrap
-  = partial "partials/books_table", locals: {books: available_ebooks}
+section.margin--both-2.margin--both-4-on-lap
+  .wrap--small
+    .text-widget.align--center
+      .omega #{pluralize(t("book.book"), available_ebooks.count)}
+      .text-widget__title
+        h1 = dato.ebooks_index.title
+
+      .grid
+        .grid__item.desk-10-12
+          .text-widget__content.text--gray
+            .formatted-content.align--center
+              = dato.ebooks_index.subtitle
+
+section.margin--both-2.margin--both-4-on-lap
+  .wrap
+    .grid--center
+      - available_ebooks.each do |book|
+        .grid__item.lap-3-12
+          .margin--bottom-4
+            = partial "partials/book", locals: {book: book}
 
 = partial "partials/cta"

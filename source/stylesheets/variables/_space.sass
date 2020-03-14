@@ -1,10 +1,8 @@
-// Bemo variables for Space utility and mixin
-//
-
-$space-unit:            12px !default
-$space-amounts:         ( 1, 2, 3, 5 ) !default
-$space-directions:      ( top bottom ) !default
-$space-breakpoints:     ( desk ) !default
+$space-unit:            12px
+$space-amounts:         ( 1, 2, 3, 4, 5 )
+$space-directions:      ( top bottom )
+$space-breakpoints:     ( lap desk )
 
 // This variable affects the `.height-*` and `.width-*` classes.
 $space-sizes: () !default
+$space-sizes: map-merge((25: 25%, 50: 50%, 75: 75%, 100: 100%), $space-sizes)

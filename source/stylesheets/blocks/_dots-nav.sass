@@ -1,0 +1,19 @@
+.dots-nav
+  background: $gray-xl-color
+  +vertical-padding(2)
+
+.dots-nav__list
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+
+.dots-nav__item
+  +margin(0.5)
+
+.dots-nav__link
+  +number-circle
+
+  .no-touchevents &:hover
+    border-color: $cyan-color
+    background-color: $cyan-color
+    color: $rev-body-color

@@ -1,0 +1,70 @@
+.frame-banner
+  position: relative
+  display: block
+
+  &:after
+    content: ""
+    +position(absolute, 0 0 0 0)
+    +margin(1.1)
+    border: 1px solid $rev-body-color
+    z-index: 2
+
+.frame-banner__background
+
+.frame-banner__title
+  +center
+  +heading-font-family
+  text-transform: uppercase
+  z-index: 10
+  color: $rev-body-color
+  +font-size(delta)
+  text-align: center
+
+.frame-banner--blue
+  @extend .frame-banner
+  &::after
+    border-color: $cyan-color
+
+  &:before
+    content: " "
+    +position(absolute, 0 0 0 0)
+    background-color: rgba($blue-color, 0.8)
+    z-index: 2
+
+.frame-banner--small
+  @extend .frame-banner
+
+.frame-banner--fixed
+  @extend .frame-banner
+  height: 400px
+
+  .frame-banner__background
+    object-fit: cover
+    height: inherit
+    width: 100%
+    max-width: none
+
+.frame-banner--link
+  overflow: hidden
+  .frame-banner__background
+    transition: all .2s ease-in-out
+
+  .no-touchevents &:hover
+    .frame-banner__background
+      transform: scale(1.1)
+
++at-breakpoint(lap)
+  .frame-banner__title
+    +font-size(gamma)
+
+  .frame-banner--small
+    .frame-banner__title
+      +font-size(delta)
+
++at-breakpoint(desk)
+  .frame-banner__title
+    +font-size(beta)
+
+  .frame-banner--small
+    .frame-banner__title
+      +font-size(delta)

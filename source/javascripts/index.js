@@ -11,6 +11,12 @@ $(document).ready(function() {
   AOS.init({disable: 'mobile'});
   lazyload();
   // CANVAS ASIDE LEFT
+  $(".js-nav-toggler").click(function (e) {
+    e.preventDefault;
+    $(".site-nav__menu").toggleClass("is-visible");
+  });
+
+
   $(".js-nav-toggler--left").click(function(e) {
     e.preventDefault;
     $(".canvas").addClass("is-shifted shift-left");

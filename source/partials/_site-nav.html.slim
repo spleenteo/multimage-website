@@ -1,57 +1,46 @@
-nav.site-nav
-  .wrap
-    .site-nav__inner
-      = link_to "#",
-        class: "site-nav__menu-toggler js-nav-toggler--left" do
-        = i("hamburger")
-      ul.site-nav__menu
-        li.site-nav__menu__item
-          = active_link_to t('nav.home'),
-            locale_path("/"),
-            class: "site-nav__menu__link"
+header.site-nav
+  nav.site-nav__top
+    .wrap--on-wall
+      ul.site-nav__top__inner
+        li.site-nav__top__item.visible--on-tab
+          = link_to "https://twitter.com/multimageED",
+            alt: "",
+            target: "_blank",
+            class: "site-nav__top__link is-twitter"
 
-        li.site-nav__menu__item
-          = active_link_to t('nav.books'),
-            locale_path("/libri/"),
-            class: "site-nav__menu__link"
+            = icon("twitter")
+            = "Twitter"
 
-        li.site-nav__menu__item
-          = active_link_to t('nav.highlights'),
-            locale_path("/libri/highlights"),
-            class: "site-nav__menu__link"
+        li.site-nav__top__item.visible--on-tab
+          = link_to "https://www.facebook.com/multimage/",
+            alt: "",
+            target: "_blank",
+            class: "site-nav__top__link is-facebook"
+            = icon("facebook")
+            = "Facebook"
+        li.site-nav__top__item
+          = link_to "/info/adesioni",
+            alt: "",
+            class: "site-nav__top__link is-cta"
+            = icon("pen")
+            = "Diventa socio"
 
-        li.site-nav__menu__item
-          = link_to t('nav.ebooks'),
-            locale_path("/libri/ebooks"),
-            class: "site-nav__menu__link"
 
-        li.site-nav__menu__item
-          = active_link_to t('nav.archive'),
-            locale_path("/libri/archivio"),
-            class: "site-nav__menu__link"
+  .site-nav__bottom
+    .wrap--on-wall
+      .site-nav__bottom__inner
+        = link_to "/",
+          class: "site-nav__logo",
+          title: "Multimage home page"
+            = image_tag "logo.png",
+              id: 'site_nav_logo',
+              title: 'Multimage Logo'
 
-        li.site-nav__menu__item
-          = active_link_to t('nav.collections'),
-            locale_path("/collane/"),
-            class: "site-nav__menu__link"
+      .align--right
+        = link_to "#",
+          class: "site-nav__menu-toggler js-nav-toggler" do
+          span Menu
 
-        li.site-nav__menu__item
-          = active_link_to t('nav.authors'),
-            locale_path("/autori/"),
-            class: "site-nav__menu__link"
-
-        li.site-nav__menu__item
-          = active_link_to t('nav.distributors'),
-            locale_path("/distributori/"),
-            class: "site-nav__menu__link"
-
-        li.site-nav__menu__item
-          .site-nav__menu__link--no-link
-            span= "#{t('nav.info')} #{i('chevron-down')}"
-            ul.site-nav__submenu
-              - dato.pages.sort_by(&:position).each_slice(3) do |sub_collection|
-                - sub_collection.each do |item|
-                  li.site-nav__submenu__item
-                    = active_link_to item.title,
-                      locale_path("/info/#{item.slug}"),
-                      class: "site-nav__submenu__link"
+      = partial "partials/main-nav",
+        locals: {block_class: "site-nav__menu",
+          locale_menu: true}

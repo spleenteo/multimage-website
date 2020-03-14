@@ -13,6 +13,8 @@
   user-select: none
   vertical-align: middle
   white-space: nowrap
+  text-transform: uppercase
+  letter-spacing: 1.5px
 
   & + &
     margin-left: $button-margin-left
@@ -31,12 +33,12 @@
     opacity: $button-disabled-opacity
 
 @mixin button-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%))
-  background: $background
+  +bg-variant($background)
   border-color: $border
   color: color-yiq($background)
 
   @include hover
-    background: $hover-background
+    +bg-variant($hover-background)
     border-color: $hover-border
     color: color-yiq($hover-background)
 
@@ -63,8 +65,12 @@
     color: $color
 
 // Button sizes
-@mixin button-size($vertical-padding, $horizontal-padding, $font-size)
-  +font-size($font-size, $font-size)
-  +vertical-padding($vertical-padding)
-  +horizontal-padding($horizontal-padding)
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $border-radius)
+  +font-size($font-size)
+  padding: $padding-vertical $padding-horizontal
+  // Manually declare to provide an override to the browser default
+  @if $enable-button-rounded
+    border-radius: $border-radius
+  @else
+    border-radius: 0
 // sass-lint:enable-all
