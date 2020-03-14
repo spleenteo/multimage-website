@@ -3,23 +3,31 @@ header.site-nav
     .wrap--on-wall
       ul.site-nav__top__inner
         li.site-nav__top__item
-          = link_to "http://teetime.golfugolino.com",
+          = link_to "https://twitter.com/multimageED",
             alt: "",
             target: "_blank",
-            class: "site-nav__top__link is-gray"
+            class: "site-nav__top__link is-twitter"
+            = icon("twitter")
             span Twitter
         li.site-nav__top__item
-          = link_to "http://teetime.golfugolino.com",
+          = link_to "https://www.facebook.com/multimage/",
             alt: "",
             target: "_blank",
-            class: "site-nav__top__link is-yellow"
+            class: "site-nav__top__link is-facebook"
+            = icon("facebook")
             span Facebook
+        li.site-nav__top__item
+          = link_to "/info/adesioni",
+            alt: "",
+            class: "site-nav__top__link is-orange"
+            = icon("pen")
+            span Diventa socio
 
 
   .site-nav__bottom
     .wrap--on-wall
       .site-nav__bottom__inner
-        = link_to "/#{I18n.locale}",
+        = link_to "/",
           class: "site-nav__logo",
           title: "Multimage home page"
             = image_tag "logo.png",

@@ -9,6 +9,7 @@
   justify-content: flex-end
 
 .site-nav__top__item
+  color: $white-color
 
 .site-nav__top__link
   display: block
@@ -17,20 +18,26 @@
   +font-size(milli)
   letter-spacing: 1.5px
   text-transform: uppercase
+  color: $white-color
 
   &.is-yellow
     background-color: $yellow-color
-
   &.is-gray
     background-color: $gray-color
     color: $rev-body-color
-
   &.is-white
     background-color: $white-color
+  &.is-facebook
+    background-color: $facebook-color
+  &.is-twitter
+    background-color: $twitter-color
+  &.is-orange
+    background-color: $orange-color
 
   svg
     +margin-right(1)
     display: none
+    color: $white-color
 
   span
     display: none
@@ -55,7 +62,7 @@
   +position(absolute, -20px null null 0 )
   z-index: 2
   img
-    width: 110px
+    width: 180px
 
 .site-nav__menu-toggler
   display: block
