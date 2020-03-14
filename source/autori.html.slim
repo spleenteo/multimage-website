@@ -33,7 +33,7 @@ section.margin--both-2.margin--both-4-on-lap
       a name="group-#{key}"
       header.section-heading--blue.section-heading--small.margin--both-3
         .section-heading__title = key
-        a.section-heading__action.milli href="#char-menu" back
+        a.section-heading__action.milli.visible--on-lap href="#char-menu" back
 
     - authors.each do |author|
       - pubs = dato.books.select{|b| b.authors.include?(author)}.count

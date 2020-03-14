@@ -65,32 +65,3 @@ section.margin--both-2.margin--both-4-on-lap
                       title: dist.name,
                       class: "lazyload __image"}
 
-
-
-
-
-
-
-section.wrap
-  .label  #{pluralize("Distributore", collections.count)}
-  table.table
-    thead
-      th = t("distributor.location")
-      th
-      th = t("distributor.name")
-    tbody
-      - collections.each do |dist|
-        tr
-          td #{dist.region}, #{dist.city}
-          td
-            - if dist.logo.present?
-              = image_tag dist.logo.file.fit('clamp').width(80).height(80).format('pjpg').to_url
-          td
-            p: strong = dist.name
-            ul
-              li #{dist.address}
-              - if dist.map.present?
-                li = link_to t("distributor.how_to_arrive"), "http://maps.google.com/maps?z=12&t=m&q=loc:#{dist.map.latitude}+#{dist.map.longitude}", target: "_blank"
-              li #{dist.telephone} #{mail_to dist.email} - #{link_to t("distributor.website"), dist.url, target: "_blank" if dist.url.present?}
-
-
