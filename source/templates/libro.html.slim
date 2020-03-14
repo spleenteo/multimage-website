@@ -23,7 +23,6 @@ header.padding--both-3.padding--both-5-on-lap.background--gray-xl
           - if book.format == "Ebook" && book.epub_url.present?
             div = link_to t("ui.buy"), book.epub_url, target: "_blank", class: "button"
 
-
 .wrap
   css:
     .showcase__cover{
@@ -56,20 +55,21 @@ section.margin--both-2.margin--both-4-on-lap
         = link_to "/autori/#{author.slug}" do
           .text-widget
             .flex
-              .flex__item.flex-6-12
+              .flex__item.flex-lap-6-12
                 .padding--both-2
                   .margin--bottom-2
-                    figure.frame-banner
-                      = image_tag author.picture.url(w: 800,
-                        h: 650,
-                        format: 'pjpg',
-                        auto: 'compress',
-                        fit: 'crop'),
-                        alt: author.full_name,
-                        title: author.full_name,
-                        class: 'frame-banner__background'
+                    - if author.picture.present?
+                      figure.frame-banner
+                        = image_tag author.picture.url(w: 800,
+                          h: 650,
+                          format: 'pjpg',
+                          auto: 'compress',
+                          fit: 'crop'),
+                          alt: author.full_name,
+                          title: author.full_name,
+                          class: 'frame-banner__background'
 
-              .flex__item.flex-6-12
+              .flex__item.flex-lap-6-12
                 .margin--both-1
                   h3.text-widget__title
                     = author_name(author)
@@ -85,42 +85,6 @@ section.margin--both-2.margin--both-4-on-lap
   header.section-heading--gray
     h2.section-heading__title Dettagli
 
-
-
-  section.wrap.margin--both-5
-    .grid
-      .grid__item.lap-6-12
-        h4.gamma = t("book.edition_details")
-        ul.padding--both-2
-          = show_book_detail(t("book.isbn"), book.isbn)
-          = show_book_detail(t("book.print_year"), book.print_year)
-          = show_book_detail(t("book.first_print_year"), book.first_print_year)
-          - if book.edition > 1
-            = show_book_detail(t("book.edition"), "#{book_edition(book)} #{t("book.edition").downcase}")
-          - book.reprints.each do |reprint|
-            - if reprint.item_type.api_key == "reprint"
-              = show_book_detail(t("book.reprint"), "#{reprint.number}<sup>a</sup> #{t("book.reprint").downcase}")
-              = show_book_detail(t("book.reprint_circulation"), reprint.circulation)
-              = show_book_detail(t("book.reprint_year"), reprint.year.year)
-          = show_book_detail(t("book.original_lang"), book.original_lang)
-          = show_book_detail(t("book.original_title"), book.original_title)
-          = show_book_detail(t("book.translator"), book.translator)
-          = show_book_license(book)
-
-      .grid__item.lap-6-12
-        h4.gamma = t("book.edition_graphics_details")
-        ul.padding--both-2
-          = show_book_detail(t("book.pages"), book.pages)
-          = show_book_detail(t("book.illustrator"), book.illustrator)
-          = show_book_detail(t("book.cover_designer"), book.cover_designer)
-          = show_book_detail(t("book.layout_artist"), book.layout_artist)
-
-
-
-
-
-
-- if nil
   section.wrap.margin--both-5
     .grid
       .grid__item.lap-6-12

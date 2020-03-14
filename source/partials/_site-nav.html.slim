@@ -2,26 +2,28 @@ header.site-nav
   nav.site-nav__top
     .wrap--on-wall
       ul.site-nav__top__inner
-        li.site-nav__top__item
+        li.site-nav__top__item.visible--on-tab
           = link_to "https://twitter.com/multimageED",
             alt: "",
             target: "_blank",
             class: "site-nav__top__link is-twitter"
+
             = icon("twitter")
-            span Twitter
-        li.site-nav__top__item
+            div Twitter
+
+        li.site-nav__top__item.visible--on-tab
           = link_to "https://www.facebook.com/multimage/",
             alt: "",
             target: "_blank",
             class: "site-nav__top__link is-facebook"
             = icon("facebook")
-            span Facebook
+            div Facebook
         li.site-nav__top__item
           = link_to "/info/adesioni",
             alt: "",
-            class: "site-nav__top__link is-orange"
+            class: "site-nav__top__link is-cta"
             = icon("pen")
-            span Diventa socio
+            div Diventa socio
 
 
   .site-nav__bottom

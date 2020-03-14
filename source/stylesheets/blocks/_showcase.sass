@@ -1,15 +1,23 @@
 .showcase
-    display: flex
-    align-items: center
-    justify-content: space-evenly
     +vertical-padding(1)
 
+    +at-breakpoint(lap)
+        display: flex
+        align-items: center
+        justify-content: space-evenly
+
 .showcase__cover
-    width: 50%
+    +margin-bottom(2)
     img
         margin: auto
         padding: 2%
+        max-width: 100%
+
+    +at-breakpoint(lap)
+        width: 50%
+        +margin-bottom(0)
  
 .showcase__body
     padding: 2%
-    width: 50%
+    +at-breakpoint(lap)
+        width: 50%
