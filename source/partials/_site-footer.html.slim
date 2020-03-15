@@ -1,16 +1,44 @@
 footer.site-footer
   .site-footer__top
     .wrap
-      .grid
+      .grid--wide
         .grid__item.desk-2-12
           .margin--bottom-2
-            ul.socials
-              li: a.socials__link href=I18n.t('socials.twitter') target="_blank"
-                = icon("twitter")
-                = "&nbsp;Twitter"
-              li: a.socials__link href=I18n.t('socials.facebook') target="_blank"
-                = icon("facebook")
-                = "&nbsp;Facebook"
+            = link_to "/",
+              class: "site-footer__logo",
+              title: "Home page"
+                = image_tag "logo--white.png",
+                  id: 'site_nav_logo',
+                  title: 'Multimage Logo'
+
+        - i = 0
+        - dato.pages.sort_by(&:position).each_slice(3) do |group|
+          - i += 1
+          .grid__item.desk-2-12
+              ul class="site-footer__menu__fl column--3"
+                li class="site-footer__menu__fl__item"
+                  - if i == 1
+                    span class="site-footer__menu__fl__link"
+                      = "Informazioni"
+
+                  div class="site-footer__menu__sl"
+                    div class="site-footer__menu__sl__wrap"
+                      ul class="site-footer__menu__sl__list"
+                        - group.each do |item|
+                          li class="site-footer__menu__sl__item"
+                            = link_to item.label,
+                              locale_path("/info/#{item.slug}"),
+                              class: "site-footer__menu__sl__link",
+                              title: item.title
+
+        .grid__item.desk-3-12
+          ul.socials
+            li: a.socials__link href=I18n.t('socials.twitter') target="_blank"
+              = icon("twitter")
+              = "&nbsp;Twitter"
+            li: a.socials__link href=I18n.t('socials.facebook') target="_blank"
+              = icon("facebook")
+              = "&nbsp;Facebook"
 
 
 
