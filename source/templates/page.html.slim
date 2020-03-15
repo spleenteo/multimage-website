@@ -1,7 +1,6 @@
 - content_for(:head)
   == dato_meta_tags(page)
 
-
 .image-banner
   - if page.featured_image.present?
     = image_tag page.featured_image.url(w: 1920,
@@ -28,7 +27,6 @@ section.margin--bottom-4
       .margin--both-3
         .formatted-content
           = page.body
-
 
 - if page.layout == "paypal"
   = partial "partials/cta"
