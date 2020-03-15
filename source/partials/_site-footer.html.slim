@@ -5,8 +5,12 @@ footer.site-footer
         .grid__item.desk-2-12
           .margin--bottom-2
             ul.socials
-              li: a.socials__link href=I18n.t('socials.twitter') target="_blank" twitter
-              li: a.socials__link href=I18n.t('socials.facebook') target="_blank" facebook
+              li: a.socials__link href=I18n.t('socials.twitter') target="_blank"
+                = icon("twitter")
+                = "&nbsp;Twitter"
+              li: a.socials__link href=I18n.t('socials.facebook') target="_blank"
+                = icon("facebook")
+                = "&nbsp;Facebook"
 
 
 
