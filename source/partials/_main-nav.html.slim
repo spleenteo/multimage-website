@@ -46,20 +46,9 @@ nav class=block_class
       div class="#{block_class}__sl"
         div class="#{block_class}__sl__wrap"
           ul class="#{block_class}__sl__list"
-
-            ruby:
-              sl_books = [
-                { :label => t('nav.books'), :url => locale_path("/libri/") },
-                { :label => t('nav.highlights'), :url => locale_path("/libri/highlights") },
-                { :label => t('nav.ebooks'), :url => locale_path("/libri/ebooks") },
-                { :label => t('nav.archive'), :url => locale_path("/libri/archivio") },
-                { :label => t('nav.collections'), :url => locale_path("/collane") }                
-              ]
-
-            - dato.pages.sort_by(&:position).each_slice(3) do |sub_collection|
-              - sub_collection.each do |item|
-                li class="#{block_class}__sl__item"
-                  = link_to item.title,
-                    locale_path("/info/#{item.slug}"),
-                    class: "#{block_class}__sl__link",
-                    title: item.title
+            - dato.pages.select{|p| p.menu == true}.sort_by(&:position).each do |item|
+              li class="#{block_class}__sl__item"
+                = link_to item.label,
+                  locale_path("/info/#{item.slug}"),
+                  class: "#{block_class}__sl__link",
+                  title: item.title
