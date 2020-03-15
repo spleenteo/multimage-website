@@ -14,7 +14,7 @@
                   title: author.full_name,
                   class: 'frame-banner__background'
               - else
-                = image_tag "isologo.png"
+                = image_tag "isologo--white.png"
 
       .flex__item.flex-lap-6-12
         .box__body
@@ -25,4 +25,3 @@
           .text--gray
             .margin--bottom-1 = author.country
             div #{pluralize(t("book.book"), dato.books.select{|b| b.authors.include?(author)}.count)} con Multimage
-

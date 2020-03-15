@@ -43,10 +43,10 @@ $(document).ready(function() {
     adaptiveHeight: true
   })
 
-  anime({
+  /*anime({
     targets: '.site-nav__logo',
     translateX: 0,
     rotate: '1turn',
     duration: 1200
-  });
+  });*/
 });

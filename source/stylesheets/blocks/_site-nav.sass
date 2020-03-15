@@ -14,7 +14,7 @@
 .site-nav__top__link
   display: block
   +vertical-padding(0.8)
-  +horizontal-padding(1.5)
+  +horizontal-padding(1.75)
   +font-size(milli)
   letter-spacing: 1.5px
   text-transform: uppercase
@@ -59,10 +59,10 @@
 
 .site-nav__logo
   display: block
-  +position(absolute, -20px null null 0 )
+  +position(absolute, 3px null null 0 )
   z-index: 2
   img
-    width: 180px
+    width: 150px
 
 .site-nav__menu-toggler
   display: block
@@ -140,6 +140,8 @@
     background-color: $blue-l-color
 
   .site-nav__menu__fl__item
+    &:last-child
+      border-right: 1px solid $blue-xl-color
     +margin(0)
     border-bottom: none
     border-left: 1px solid $blue-xl-color

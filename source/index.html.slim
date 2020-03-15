@@ -46,7 +46,7 @@ header.image-banner
                     = link_to book.collection.name, "/collane/#{book.collection.slug}"
 
                   .section-heading__action.uppercase In evidenza
-                    
+
 
             .box-shadow
               .wrap
@@ -96,9 +96,9 @@ section.margin--both-4.margin--both-6-on-lap
                 .formatted-content
                   = dato.home.hero_body
 
-            .widget__action
-              = link_to "I nostri libri", "/libri/", class: 'text-link'
-              = link_to "Chi siamo", "/info/chi-siamo/", class: 'text-link'
+            .widget
+              = link_to "I nostri libri", "/libri/", class: 'widget__action'
+              = link_to "Chi siamo", "/info/chi-siamo/", class: 'widget__action'
 
 
 
@@ -107,7 +107,7 @@ section.margin--both-4.margin--both-6-on-lap
   header.wrap
     .flex--align-center
       .flex__item.lap-6-12
-        div.margin--bottom-3 = image_tag "logo.png"
+        div.margin--bottom-3 = image_tag "logo--white.png"
         h1.beta.margin--bottom-3 = dato.home.title
         p = dato.home.claim
 
