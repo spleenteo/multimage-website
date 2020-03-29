@@ -41,6 +41,7 @@ it:
     biography: "Biografia"
     curator: "(curatore)"
     from_country: "Proveniente da %{country}"
+    aka: "L'autore è conosciuto anche come"
   book:
     authors: "Autore/i"
     author: "Autore"

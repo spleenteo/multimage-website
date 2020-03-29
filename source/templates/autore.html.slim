@@ -33,6 +33,12 @@ header.padding--both-3.padding--both-5-on-lap.background--gray-xl
           .text-widget__content
             .formatted-content
               = author.biography
+            .pseudonym
+              - if author.pseudonyms.present?
+                span>= t("author.aka")
+                - author.pseudonyms.each do |pseudonym|
+                  span>
+                    a.pseudonym__link href="/autori/#{pseudonym.slug}" = pseudonym.full_name
 
 
 section.margin--both-2.margin--both-4-on-lap
