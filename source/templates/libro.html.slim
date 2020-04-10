@@ -22,11 +22,6 @@ header.padding--both-3.padding--both-5-on-lap.background--gray-xl
             div = link_to t("ui.buy"), book.epub_url, target: "_blank", class: "button"
 
 .wrap
-  css:
-    .showcase__cover{
-      background-image: url("#{book.cover_image.file.fit('crop').crop('edges').blur(700).width(1200).height(400).bri(45).format('pjpg').to_url}");
-      background-size: cover;
-    }
   .showcase
     .showcase__cover
       figure
