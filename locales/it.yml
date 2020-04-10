@@ -34,7 +34,6 @@ it:
 
   ui:
     buy: "Acquista"
-    unavailable_book: "Attenzione: questo libro è esaurito ma potrebbe essere ristampato nel prossimo futuro"
     archived_book: "Attenzione: questo libro è fuori catalogo e non verrà ristampato"
   author:
     by: "di questo autore"

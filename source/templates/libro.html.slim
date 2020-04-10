@@ -14,8 +14,6 @@ header.padding--both-3.padding--both-5-on-lap.background--gray-xl
       .margin--top-3.uppercase
         - if book.archive
           .label--danger: strong = t("ui.archived_book")
-        - elsif book.unavailable
-          .label--danger: strong = t("ui.unavailable_book")
         - else
           - if book.price.present?
             = link_to "#{book_price(book)} – #{t("book.format")} #{book.format}", "#"
