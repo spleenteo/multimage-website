@@ -15,11 +15,6 @@ header.padding--both-3.padding--both-5-on-lap.background--gray-xl
 
 .wrap
   - if author.picture.present?
-    css:
-      .showcase__cover{
-        background-image: url("#{author.picture.file.fit('crop').crop('edges').blur(700).width(600).height(400).format('pjpg').to_url }");
-        background-size: cover;
-      }
   .showcase
     .showcase__cover
       - if author.picture.present?

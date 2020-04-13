@@ -14,8 +14,6 @@ header.padding--both-3.padding--both-5-on-lap.background--gray-xl
       .margin--top-3.uppercase
         - if book.archive
           .label--danger: strong = t("ui.archived_book")
-        - elsif book.unavailable
-          .label--danger: strong = t("ui.unavailable_book")
         - else
           - if book.price.present?
             = link_to "#{book_price(book)} – #{t("book.format")} #{book.format}", "#"
@@ -24,11 +22,6 @@ header.padding--both-3.padding--both-5-on-lap.background--gray-xl
             div = link_to t("ui.buy"), book.epub_url, target: "_blank", class: "button"
 
 .wrap
-  css:
-    .showcase__cover{
-      background-image: url("#{book.cover_image.file.fit('crop').crop('edges').blur(700).width(1200).height(400).bri(45).format('pjpg').to_url}");
-      background-size: cover;
-    }
   .showcase
     .showcase__cover
       figure
@@ -112,3 +105,4 @@ section.margin--both-2.margin--both-4-on-lap
           = show_book_detail(t("book.illustrator"), book.illustrator)
           = show_book_detail(t("book.cover_designer"), book.cover_designer)
           = show_book_detail(t("book.layout_artist"), book.layout_artist)
+          = show_book_detail(t("book.dimensions"), book.dimensions)
