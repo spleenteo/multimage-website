@@ -148,6 +148,7 @@
   .site-nav__menu__fl__item
     &:last-child
       border-right: 1px solid $blue-xl-color
+    +position(relative)
     +margin(0)
     border-bottom: none
     border-left: 1px solid $blue-xl-color
@@ -170,18 +171,20 @@
   .site-nav__menu__sl
     z-index: 1
     display: none
-    +position(absolute, null 0 null 0)
+    +position(absolute, null null null 0)
     +padding(1)
 
   .site-nav__menu__sl__list
-    display: flex
-    flex-wrap: wrap
-    justify-content: center
+    //display: flex
+    //flex-wrap: wrap
+    //justify-content: center
 
   .site-nav__menu__sl__item
     border-left: 1px solid $blue-xl-color
-    &:first-child
-      border: none
+    &:hover
+      border-left-color: $yellow-color
+    //&:first-child
+      //border: none
 
   .site-nav__menu__sl__link
     +vertical-padding(0.5)
