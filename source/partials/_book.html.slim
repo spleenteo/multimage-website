@@ -4,14 +4,16 @@
     class: "box"
 
     .box__image
-      = image_lazy book.cover_image,
-          {w: 600, fit: 'crop'},
-          [[600, 480],
-          [600, 768],
-          [600, 1280]],
-          {alt: book.title,
-          title: book.title,
-          class: "lazyload"}
+      - image = book.cover_image
+      = image_tag image.url(w: 10, h: 10, fit:'crop'),
+          data: {'sizes': '100vw',
+            'src': image.url(w: 600, h: 480, fit:'fill', auto:'compress'),
+            'srcset': "#{image.url(w: 600, h: 480, fit:'fill', auto:'compress')} 480w,
+            #{image.url(w: 600, h: 768, fit:'fill', auto:'compress')} 844w,
+            #{image.url(w: 600, h: 1280, fit:'fill', auto:'compress')} 1090w"},
+          class: "lazyload",
+          alt: image.alt,
+          title: image.title
 
     .uppercase.smallprint
         span.text--blue= book.collection.name
