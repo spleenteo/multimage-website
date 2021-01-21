@@ -45,13 +45,11 @@ header.padding--both-3.padding--both-5-on-lap.background--gray-xl
           .text-widget__content
             .formatted-content
               = book.review
-          
 
 section.margin--both-2.margin--both-4-on-lap
   header.section-heading--gray
     h2.section-heading__title
       = "#{pluralize("Autore", book.authors.count)} del libro"
-
 
   .wrap.grid--center
     - book.authors.each do |author|
@@ -117,3 +115,18 @@ section.margin--both-2.margin--both-4-on-lap
           = show_book_detail(t("book.cover_designer"), book.cover_designer)
           = show_book_detail(t("book.layout_artist"), book.layout_artist)
           = show_book_detail(t("book.dimensions"), book.dimensions)
+
+
+- books = dato.books.select{|b| b.archive != true && b.collection == book.collection && b != book}.shuffle.take(6)
+- if books.count >= 1
+  section.margin--both-2.margin--both-4-on-lap
+    header.section-heading--gray
+      h2.section-heading__title Altri titoli da questa collana
+
+    section.wrap.margin--both-5
+      .grid--center
+        - books.each do |book|
+          .grid__item.tab-4-12.desk-2-12
+            .margin--bottom-4
+              = partial "partials/book", locals: {book: book}
+
