@@ -34,7 +34,7 @@ it:
 
   ui:
     buy: "Acquista"
-    archived_book: "Attenzione: questo libro è fuori catalogo e non verrà ristampato"
+    archived_book: "Attenzione: questo libro è fuori catalogo o ne è disponibile una nuova edizione."
   author:
     by: "di questo autore"
     biography: "Biografia"

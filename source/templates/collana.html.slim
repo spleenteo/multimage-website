@@ -11,7 +11,18 @@ section.margin--both-2.margin--both-4-on-lap
       .text-widget__title
         h1 = col.name
 
-      .grid
+
+      .grid--center
+        - if col.logo.present?
+          .grid__item.width-4-12
+            .margin--both-3
+              = image_lazy col.logo,
+                {w: 200, fit: 'crop'},
+                [[200, 80]],
+                {alt: col.name,
+                title: col.name,
+                class: "lazyload __image"}
+
         .grid__item.desk-10-12
           .text-widget__content.text--gray
             .formatted-content.align--center
@@ -21,7 +32,7 @@ section.margin--both-2.margin--both-4-on-lap
   .wrap
     .grid--center
       - books.each do |book|
-        .grid__item.lap-3-12
+        .grid__item.tab-4-12.desk-2-12
           .margin--bottom-4
             = partial "partials/book", locals: {book: book}
 
