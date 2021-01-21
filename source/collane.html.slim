@@ -41,16 +41,6 @@ section
                   title: coll.name,
                   class: "lazyload __image"}
 
-              / figure.frame-banner
-              /   = image_tag team_member.image.url(w: 500,
-              /     h: 450,
-              /     format: 'pjpg',
-              /     auto: 'compress',
-              /     fit: 'crop'),
-              /     alt: team_member.name,
-              /     title: team_member.name,
-              /     class: 'frame-banner__background'
-
               .margin--both-2
                 .align--center
                   = link_to "/collane/#{coll.slug}" do
