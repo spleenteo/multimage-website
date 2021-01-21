@@ -23,7 +23,8 @@
     h3.gamma.margin--both-1.family--heading
       = book.title
     .small = book.subtitle
-    = strip_html(link_to_authors(book))
+    .margin--both-2
+      = strip_html(link_to_authors(book))
 
     - if book.price.present?
     .margin--both-1

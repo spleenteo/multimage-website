@@ -37,12 +37,10 @@ TODO: logica da progettare quando ci sarà l'ecommerce
         link_to author_name(author), "/autori/#{author.slug}"
       end.to_sentence(two_words_connector: ' e ', last_word_connector: ' e ')
 
-      illustrator = book.illustrator.present? ? content_tag(:div, t("book.illustrated_by") + book.illustrator) : ""
+      illustrator = book.illustrator.present? ? content_tag(:div, t("book.illustrated_by") + " " + book.illustrator) : ""
 
       concat(
-        content_tag(:div, prefix + authors) +
-        illustrator
-      )
+        content_tag(:div, prefix + " " + authors) + ("," if illustrator.present?) + " " + illustrator)
   end
 
   def show_book_license(book)
