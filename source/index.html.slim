@@ -1,7 +1,7 @@
 - content_for(:head)
   == dato_meta_tags(dato.home)
 
-header.image-banner
+header.image-banner.margin--bottom-4
   = image_lazy dato.home.hero_image,
     {w: 600, fit: 'crop'},
     [[600, 480],
@@ -19,8 +19,7 @@ header.image-banner
 
 - if dato.home.highlight.present?
   - book = dato.home.highlight
-  hr
-  .margin--both-2.margin--both-4-on-lap
+  .margin--both-2.margin--bottom-4-on-lap.margin--bottom-6-on-lap
     .wrap
       .grid--center
         .grid__item.desk-2-12
@@ -44,10 +43,7 @@ header.image-banner
                 .section-heading__columns
                   h2.section-heading__action.uppercase
                     = link_to book.collection.name, "/collane/#{book.collection.slug}"
-
                   .section-heading__action.uppercase In evidenza
-
-
             .box-shadow
               .wrap
                 section.padding--both-2
@@ -67,8 +63,7 @@ header.image-banner
                             = link_to "Scheda libro", "/libri/#{book.slug}", class: "text-link"
 
 
-hr
-section.margin--both-4.margin--both-6-on-lap
+section.margin--bottom-4.margin--bottom-6-on-lap
   .wrap
     .grid
       .grid__item.desk-3-12
@@ -83,7 +78,7 @@ section.margin--both-4.margin--both-6-on-lap
                   title: dato.home.banner.title,
                   class: "lazyload colored-shadow__content"}
 
-      .grid__item.desk-9-12.desk-push-1-12
+      .grid__item.desk-6-12.desk-push-1-12
         .margin--both-2.margin--both-4-on-desk
           .text-widget
             .text-widget__small-title
@@ -92,15 +87,13 @@ section.margin--both-4.margin--both-6-on-lap
             h2.text-widget__title
               = dato.home.hero_title
             .margin--both-2
-              .text-widget__text
+              .text-widget__text_
                 .formatted-content
                   = dato.home.hero_body
 
             .widget
               = link_to "I nostri libri", "/libri/", class: 'widget__action'
               = link_to "Chi siamo", "/info/chi-siamo/", class: 'widget__action'
-
-
 
 
 - if nil
@@ -125,7 +118,6 @@ section.margin--both-4.margin--both-6-on-lap
 
   = partial "partials/cta"
   / = partial "partials/highlight"
-  = partial "partials/newsletter"
 
   - if false
     section
