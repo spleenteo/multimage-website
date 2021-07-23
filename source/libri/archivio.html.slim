@@ -1,7 +1,7 @@
 - content_for(:head)
   == dato_meta_tags(dato.archive_index)
 
-- archived_books = dato.books.select{|b| b.archive == true}.sort_by(&:print_year).reverse
+- archived_books = dato.books.select{|b| b.archive == true}.sort_by{|t| [-t.print_year, t.title]}
 = partial "/libri/books_sub_nav"
 
 section.margin--both-2.margin--both-4-on-lap
