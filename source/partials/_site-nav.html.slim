@@ -3,7 +3,16 @@ header.site-nav
     .wrap--on-wall
       ul.site-nav__top__inner
         li.site-nav__top__item.visible--on-tab
-          = link_to "https://twitter.com/multimageED",
+          = link_to t("socials.instagram"),
+            alt: "",
+            target: "_blank",
+            class: "site-nav__top__link is-instagram"
+
+            = icon("instagram")
+            = "Instagram"
+
+        li.site-nav__top__item.visible--on-tab
+          = link_to t("socials.twitter"),
             alt: "",
             target: "_blank",
             class: "site-nav__top__link is-twitter"
@@ -12,7 +21,7 @@ header.site-nav
             = "Twitter"
 
         li.site-nav__top__item.visible--on-tab
-          = link_to "https://www.facebook.com/multimage/",
+          = link_to t("socials.facebook"),
             alt: "",
             target: "_blank",
             class: "site-nav__top__link is-facebook"
