@@ -1,6 +1,11 @@
 - content_for(:head)
   == dato_meta_tags(book)
 
+ruby: 
+  subtitle = book.subtitle.present? ? book.subtitle : ""
+  description = "Di #{strip_html(link_to_authors(book))} - #{subtitle}"
+  cover_url = book.cover_image.file.fit('crop').crop('edges').width(400).format('pjpg').to_url
+
 header.padding--both-3.padding--both-5-on-lap.background--gray-xl
   .wrap
     .text-widget.align--center
@@ -9,14 +14,28 @@ header.padding--both-3.padding--both-5-on-lap.background--gray-xl
 
       .text-widget__title
         h1= book.title
-      p.text-widget__subtitle = book.subtitle if book.subtitle.present?
+      p.text-widget__subtitle = subtitle
 
-      .margin--top-3.uppercase
+      .margin--top-3
         - if book.archive
           .label--danger: strong = t("ui.archived_book")
         - else
           - if book.price.present?
-            = link_to "#{book_price(book)} – #{t("book.format")} #{book.format}", "#"
+            .uppercase = "#{book_price(book)} – #{t("book.format")} #{book.format}"
+
+          - if shoppable_book?(book)
+            button[
+              class="snipcart-add-item button--cyan margin--top-2"
+              data-item-id=book.id
+              data-item-price=book.price
+              data-item-url="/"
+              data-item-description=description
+              data-item-image=cover_url
+              data-item-name=book.title
+              data-item-max-quantity="5"
+            ]
+              | Aggiungi al carrello
+
 
           - if book.format == "Ebook" && book.epub_url.present?
             div = link_to t("ui.buy"), book.epub_url, target: "_blank", class: "button"
@@ -36,7 +55,7 @@ header.padding--both-3.padding--both-5-on-lap.background--gray-xl
   .showcase
     .showcase__cover
       figure
-        = image_tag book.cover_image.file.fit('crop').crop('edges').width(400).format('pjpg').to_url,class: "img-fluid radius10_ img"
+        = image_tag cover_url, class: "img-fluid radius10_ img"
 
     - if book.review.present?
       .showcase__body
@@ -45,6 +64,7 @@ header.padding--both-3.padding--both-5-on-lap.background--gray-xl
           .text-widget__content
             .formatted-content
               = book.review
+
 
 section.margin--both-2.margin--both-4-on-lap
   header.section-heading--gray
@@ -130,3 +150,4 @@ section.margin--both-2.margin--both-4-on-lap
             .margin--bottom-4
               = partial "partials/book", locals: {book: book}
 
+div id="snipcart" data-config-modal-style="side" data-api-key="MzRmZDNiZjgtNmFkNy00NDI0LWFhODAtMDAwZGNhMTU3NDZkNjM3Njk5NzE4MDg2MTkzNzMw" hidden="hidden"
