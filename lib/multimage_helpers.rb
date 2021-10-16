@@ -19,6 +19,11 @@ TODO: logica da progettare quando ci sarà l'ecommerce
     number_to_currency(p, :unit => "€", :locale=>"it")
   end
 
+  def shoppable_book?(book)
+    return book && !book.archive && book.price.present? && book.price > 0 && book.format == "Cartaceo"
+  end
+
+
   def show_book_detail(label, detail)
     if detail.present? && label.present?
       content_tag :li do

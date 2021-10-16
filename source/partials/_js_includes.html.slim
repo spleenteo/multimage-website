@@ -1,4 +1,8 @@
 = javascript_include_tag  "application"
+script async="async" src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"
+
+
+
 - if data.config.google_maps_key
   = javascript_include_tag "//maps.googleapis.com/maps/api/js?key=#{data.config.google_maps_key}&callback=initMap", async: true, defer: true
 
