@@ -1,0 +1,13 @@
+doctype 5
+html lang=I18n.locale
+  head = partial "partials/head"
+  body
+    .canvas
+      .canvas__main
+        = partial "partials/site-nav"
+      
+        main.canvas__main
+          = yield
+
+    = partial "partials/js_includes"
+    .svg-sprite-inliner= partial "images/sprite.svg"

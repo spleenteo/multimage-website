@@ -1,0 +1,85 @@
+---
+layout: staff
+---
+
+- content_for(:head)
+  == dato_meta_tags(dato.books_index)
+
+- all_books = dato.books.sort_by{|t| [-t.print_year, t.title]}
+
+
+header
+  h1.beta Elenco completo libri (#{all_books.count})
+  <a class="button--cyan" href="#" onclick="download_table_as_csv('allbookstable');">Scarica il CSV</a>
+  hr
+
+
+table#allbookstable.table--scollable
+  thead
+    th ISBN 
+    th Archiviato
+    th Titolo
+    th Sottotitolo
+    th Autori/Curatori
+    th Collana
+    th Formato
+    th Impaginatore
+    th Illustratore
+    th Autore Copertina
+    th Pagine
+    th Edizione
+    th Anno di stampa
+    th Stampa prima edizione
+    th Ristampe
+    th Dimensioni
+    th Lingua Originale
+    th Titolo Originale
+    th Traduttore
+    th Parole chiave
+    th Prezzo
+    th Promozione speciale
+    th Magazzino
+    th Copyright
+    th Url
+  
+  tbody
+    - all_books.each do |book|
+      tr
+        td = book.isbn
+        td = book.archive ? "Si" : "No"
+        td = book.title
+        td = book.subtitle
+        td
+          - book.authors.each do |aut|
+            span> #{author_name(aut)},
+        td = book.collection.name
+        td = book.format
+        td = book.layout_artist
+        td = book.illustrator
+        td = book.cover_designer
+        td = book.pages
+        td = book.edition
+        td = book.print_year
+        td = book.first_print_year
+        td
+          - book.reprints.each do |rep|
+            span> #{rep.number} rist., #{rep.year} 
+        td = book.dimensions
+        td = book.original_lang
+        td = book.original_title
+        td = book.translator
+        td
+          - book.keywords.each do |k|
+            span> #{k.name}
+        td = book.price
+        td = book.promo
+        td = book.stock
+        td = book.copyright
+        td = link_to "https://www.multimage.org/libri/#{book.slug}", "/libri/#{book.slug}"
+
+
+    
+
+
+
+
