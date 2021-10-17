@@ -3,9 +3,8 @@
 
 ruby: 
   subtitle = book.subtitle.present? ? book.subtitle : ""
-  description = "Di #{strip_html(link_to_authors(book))} - #{subtitle}"
+  description = "#{strip_html(link_to_authors(book))} - #{subtitle}"
   cover_url = book.cover_image.file.fit('crop').crop('edges').width(400).format('pjpg').to_url
-  c = "ciao"
 
 header.padding--both-3.padding--both-5-on-lap.background--gray-xl
   .wrap
@@ -27,7 +26,7 @@ header.padding--both-3.padding--both-5-on-lap.background--gray-xl
           - if shoppable_book?(book)
             button[
               class="snipcart-add-item button--cyan margin--top-2"
-              data-item-id=book.id
+              data-item-id=book.isbn
               data-item-price=book.price
               data-item-url="/libri/#{book.slug}"
               data-item-description=description
