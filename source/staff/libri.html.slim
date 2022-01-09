@@ -5,7 +5,7 @@ layout: staff
 - content_for(:head)
   == dato_meta_tags(dato.books_index)
 
-- all_books = dato.books.sort_by{|t| [-t.print_year, t.title]}
+- all_books = dato.books.sort_by{|b| b.print_year}.reverse
 
 
 header

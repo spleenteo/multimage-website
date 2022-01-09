@@ -88,6 +88,4 @@ TODO: logica da progettare quando ci sarà l'ecommerce
     re = /<("[^"]*"|'[^']*'|[^'">])*>/
     content.gsub(re, '')
   end
-
-
 end

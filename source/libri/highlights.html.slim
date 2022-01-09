@@ -1,7 +1,9 @@
 - content_for(:head)
   == dato_meta_tags(dato.highlights_index)
 
-- available_books = dato.books.select{|b| b.archive != true  && b.highlight == true}.sort_by{|t| [-t.print_year, t.title]}
+- available_books = dato.books.select{|b| b.archive != true  && b.highlight == true}.sort_by{|b| b.print_year}.reverse
+
+/ .sort_by{|t| [-t.print_year, t.title]}
 
 = partial "/libri/books_sub_nav"
 

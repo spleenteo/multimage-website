@@ -1,7 +1,7 @@
 - content_for(:head)
   == dato_meta_tags(col)
 
-- books = dato.books.select{|b| b.archive != true && b.collection == col}
+- books = dato.books.select{|b| b.archive != true && b.collection == col}.sort_by{|b| b.print_year}.reverse
 
 
 section.margin--both-2.margin--both-4-on-lap
