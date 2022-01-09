@@ -1,6 +1,7 @@
 it:
   iubenda_id: 47684062
   contact_email: "info@multimage.org"
+  orders_email: "ordini@multimage.org"
 
   index_lang:
     it: "Versione italiana"
@@ -13,7 +14,7 @@ it:
   credits:
     button_label: "Design & Development Cantiere Creativo"
     url: "https://www.cantierecreativo.net"
-    title: "Cantiere Creativo Agenzia web Ruby on Rails Firenze"
+    title: "Cantiere Creativo Digital Partner"
 
   socials:
     facebook: https://www.facebook.com/multimage/
