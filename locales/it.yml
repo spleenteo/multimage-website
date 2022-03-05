@@ -23,7 +23,7 @@ it:
 
   nav:
     archive: "Fuori catalogo"
-    authors: "Autori"
+    authors: "Autrici/Autori"
     books: "Catalogo"
     collections: "Collane"
     distributors: "Distributori"
@@ -44,7 +44,7 @@ it:
     from_country: "Proveniente da %{country}"
     aka: "L'autore è conosciuto anche come"
   book:
-    authors: "Autore/i"
+    authors: "Autrici/Autori"
     author: "Autore"
     author/alias: "Nome/Pseudonimo"
     author_page: "Scheda autore"
