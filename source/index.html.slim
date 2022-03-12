@@ -95,6 +95,40 @@ section.margin--bottom-4.margin--bottom-6-on-lap
               = link_to "I nostri libri", "/libri/", class: 'widget__action'
               = link_to "Chi siamo", "/info/chi-siamo/", class: 'widget__action'
 
+- dato.home.banners.each do |bb|
+  section.margin--bottom-4.margin--bottom-6-on-lap
+    .wrap
+      .grid
+        .grid__item.desk-3-12
+          .space--both-2
+            .reverse-gutter
+              figure.image-color-shadow.is-blue
+                = image_lazy bb.featured_image,
+                    {w: 600, fit: 'crop'},
+                    [[600, 280],
+                    [600, 35]],
+                    {alt: bb.featured_image.alt,
+                    title: bb.featured_image.title,
+                    class: "lazyload colored-shadow__content"}
+
+        .grid__item.desk-6-12.desk-push-1-12
+          .margin--both-2.margin--both-4-on-desk
+            .text-widget
+              .text-widget__small-title In evidenza
+
+              h2.text-widget__title
+                = bb.title
+              .margin--both-2
+                .text-widget__text_
+                  .formatted-content
+                    = bb.content
+
+              .widget
+                = link_to "Scopri di più", bb.link, class: 'widget__action'
+
+
+
+
 
 - if nil
   header.wrap
@@ -118,24 +152,3 @@ section.margin--bottom-4.margin--bottom-6-on-lap
 
   = partial "partials/cta"
   / = partial "partials/highlight"
-
-  - if false
-    section
-      .wrap
-        h1.space--both-1= lorem.sentence
-        .formatted-content
-          = lorem.paragraphs(5)
-          / Test image with lazyload options
-          /= image_lazy(dato.homepage.image, {w: 1920}, [[960, 480], [1080, 720], [1536, 1024], [1920, 1536]])
-
-    section.space--both-2
-      .wrap
-        .grid--center
-          .grid__item.desk-8-12
-            .carousel
-              .carousel__item
-                = image_tag("", data: {lazy: "//via.placeholder.com/1920x750/FF0000"}, alt: "placeholder", title: "title")
-              .carousel__item
-                = image_tag("", data: {lazy: "//via.placeholder.com/1920x750/0000FF"}, alt: "placeholder", title: "title")
-              .carousel__item
-                = image_tag("", data: {lazy: "//via.placeholder.com/1920x750/008000"}, alt: "placeholder", title: "title")
