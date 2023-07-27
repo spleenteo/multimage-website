@@ -5,6 +5,14 @@ nav class=block_class
   ul class="#{block_class}__fl"
     li class="#{block_class}__fl__item"
       span class="#{block_class}__fl__link"
+        div.search
+        
+          input.search__input id="googlesearch" name="search" placeholder="Cerca libri, autori..."
+          button.search__input onclick="searchStuff()" cerca
+
+
+    li class="#{block_class}__fl__item"
+      span class="#{block_class}__fl__link"
         span Libri
 
       div class="#{block_class}__sl"
