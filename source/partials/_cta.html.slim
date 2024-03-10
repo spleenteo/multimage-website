@@ -9,14 +9,6 @@ section.cta
 
       .grid__item.lap-6-12
         .align--center
-          form action="https://www.paypal.com/cgi-bin/webscr" method="post"
-            .margin--bottom-2
-              = link_to "Iscriviti", "http://eepurl.com/KigZj", class: "button--blue"
-              input name="cmd" type="hidden" value="_s-xclick"
-              input name="hosted_button_id" type="hidden" value="JQHJN5FHK3VMJ"
-
-            button.button--blue alt="PayPal - Il sistema di pagamento online pi&ugrave; facile e sicuro!" name="submit" type="submit" Paga con Paypal
-            img src="https://www.paypal.com/it_IT/i/scr/pixel.gif" border="0" alt="" width="1" height="1"
-            / form action="https://www.paypal.com/cgi-bin/webscr" method="post"
-            /   strong.small Grazie mille per il tuo supporto!
+          .margin--bottom-2
+            = link_to "Diventa socio!", "/info/adesioni", class: "button--blue"
 

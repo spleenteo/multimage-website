@@ -28,3 +28,15 @@ section.margin--bottom-4
         .formatted-content
           = page.body
 
+- if page.slug == "adesioni"
+  .align--center
+    .margin--bottom-2
+      form action="https://www.paypal.com/cgi-bin/webscr" method="post"
+        = link_to "Iscriviti", "http://eepurl.com/KigZj", target: "_blank", class: "button--blue"
+
+        button.button--blue alt="PayPal - Il sistema di pagamento online pi&ugrave; facile e sicuro!" name="submit" type="submit" Paga con Paypal
+        img src="https://www.paypal.com/it_IT/i/scr/pixel.gif" border="0" alt="" width="1" height="1"
+        input name="cmd" type="hidden" value="_s-xclick"
+        input name="hosted_button_id" type="hidden" value="JQHJN5FHK3VMJ"
+
+
