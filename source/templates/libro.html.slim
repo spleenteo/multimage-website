@@ -16,10 +16,11 @@ header.padding--both-3.padding--both-5-on-lap.background--gray-xl
           .label--danger: strong = t("ui.archived_book")
         - else
           - if book.price.present?
-            = link_to "#{book_price(book)} – #{t("book.format")} #{book.format}", "#"
+            - if book.format != "Ebook"
+              div = link_to "#{book_price(book)} – #{t("book.format")} #{book.format} - #{t("ui.buy")}", "/info/ordinare" , target: "_blank", class: "button"
 
-          - if book.format == "Ebook" && book.epub_url.present?
-            div = link_to t("ui.buy"), book.epub_url, target: "_blank", class: "button"
+            - if book.format == "Ebook" && book.epub_url.present?
+              div = link_to "#{book_price(book)} – #{t("book.format")} #{book.format} - #{t("ui.buy")}", book.epub_url, target: "_blank", class: "button"
 
         - available_books = dato.books.select{|b| b.archive != true && b.title == book.title && b.format != book.format}
 
